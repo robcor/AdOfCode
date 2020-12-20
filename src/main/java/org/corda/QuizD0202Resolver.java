@@ -3,13 +3,14 @@ package org.corda;
 
 import org.corda.helper.StringHelper;
 import org.corda.model.DayTwoData;
+import org.corda.model.Numerable;
 
 public class QuizD0202Resolver extends QuizD02 {
     private QuizTemplateResolver quizTemplate;
 
 
     public QuizD0202Resolver(String fileName) {
-        super( fileName );
+        super( fileName);
     }
 
     /*
@@ -18,7 +19,7 @@ public class QuizD0202Resolver extends QuizD02 {
     Exactly one of these positions must contain the given letter
      */
     @Override
-    public boolean checkValue(DayTwoData data) {
+    public boolean checkValue(DayTwoData data, Object dummy) {
         int firstPosition = data.getFirstInt();
         String first = StringHelper.getLetterAt( data.getPassword(), firstPosition );
         int secondPosition = data.getSecondInt();
@@ -27,8 +28,5 @@ public class QuizD0202Resolver extends QuizD02 {
         String letter = data.getLetter();
         return (letter.equals( first ) && !letter.equals( second )) || (!letter.equals( first ) && letter.equals( second ));
     }
-
-
-
 
 }

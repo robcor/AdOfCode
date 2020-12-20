@@ -2,10 +2,10 @@ package org.corda;
 
 import org.corda.model.DayTwoData;
 
-public abstract class QuizD02 extends Quiz<DayTwoData> {
+public abstract class QuizD02 extends Quiz<DayTwoData, Object> {
 
     protected QuizD02(String fileName) {
-        super( fileName );
+        super( fileName , null);
     }
 
     @Override

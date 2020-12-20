@@ -44,35 +44,35 @@ class TestDay02 {
     void checkValue_1() throws Exception {
         DayTwoData dayTwo = new DayTwoData( 1, 3, "a", "abcde" );
         QuizD0201Resolver resolver = new QuizD0201Resolver("alfa");
-        assertTrue( resolver.checkValue( dayTwo ) );
+        assertTrue( resolver.checkValue( dayTwo , null ) );
     }
 
     @Test
     void checkTest_2() throws Exception {
         DayTwoData dayTwo = new DayTwoData( 1, 3, "b", "cdefg" );
         QuizD0202Resolver resolver = new QuizD0202Resolver("alfa");
-        assertFalse( resolver.checkValue( dayTwo ) );
+        assertFalse( resolver.checkValue( dayTwo , null ) );
     }
 
     @Test
     void checkTest_3() throws Exception {
         DayTwoData dayTwo = new DayTwoData( 2, 9, "c", "ccccccccc" );
         QuizD0202Resolver resolver = new QuizD0202Resolver("alfa");
-        assertFalse( resolver.checkValue( dayTwo ) );
+        assertFalse( resolver.checkValue( dayTwo , null ) );
     }
 
     @Test
     void checkTest_4() throws Exception {
         DayTwoData dayTwo = new DayTwoData( 3, 7, "d", "fghjklb" );
         QuizD0202Resolver resolver = new QuizD0202Resolver("alfa");
-        assertFalse( resolver.checkValue( dayTwo ) );;
+        assertFalse( resolver.checkValue( dayTwo , null ) );;
     }
 
     @Test
     void checkTest_5() throws Exception {
         DayTwoData dayTwo = new DayTwoData( 1, 3, "a", "kbade" );
         QuizD0202Resolver resolver = new QuizD0202Resolver("alfa");
-        assertTrue( resolver.checkValue( dayTwo ) );
+        assertTrue( resolver.checkValue( dayTwo , null ) );
     }
 
 

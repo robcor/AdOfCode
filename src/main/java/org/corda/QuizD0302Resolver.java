@@ -1,6 +1,8 @@
 package org.corda;
 
 
+import org.corda.helper.StringHelper;
+import org.corda.model.ConfigD03;
 import org.corda.model.DayThreeData;
 
 public class QuizD0302Resolver extends QuizD03 {
@@ -8,9 +10,18 @@ public class QuizD0302Resolver extends QuizD03 {
     public QuizD0302Resolver(String fileName) {
         super( fileName );
     }
-
+    
     @Override
-    public boolean checkValue(DayThreeData data) {
-        return false;
+    public boolean checkValue(DayThreeData data, ConfigD03 config) {
+        int position = (data.getSequence() * 3) % data.getInput().length();
+        String letter = StringHelper.getLetterAtStandard( data.getInput(), position );
+
+        if (OPEN_SQUARE.equals( letter )) {
+            return false;
+        } else if (TREE.equals( letter )) {
+            return true;
+        } else {
+            throw new IllegalArgumentException( "value is:" + letter );
+        }
     }
 }

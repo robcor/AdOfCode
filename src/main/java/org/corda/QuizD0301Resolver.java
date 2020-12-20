@@ -2,19 +2,19 @@ package org.corda;
 
 
 import org.corda.helper.StringHelper;
+import org.corda.model.ConfigD03;
 import org.corda.model.DayThreeData;
 
 public class QuizD0301Resolver extends QuizD03 {
 
-    private static final String OPEN_SQUARE = ".";
-    private static final String TREE = "#";
+
 
     public QuizD0301Resolver(String fileName) {
         super( fileName );
     }
 
     @Override
-    public boolean checkValue(DayThreeData data) {
+    public boolean checkValue(DayThreeData data, ConfigD03 dummy) {
         int position = (data.getSequence() * 3) % data.getInput().length();
         String letter = StringHelper.getLetterAtStandard( data.getInput(), position );
 
@@ -26,4 +26,5 @@ public class QuizD0301Resolver extends QuizD03 {
             throw new IllegalArgumentException( "value is:" + letter );
         }
     }
+
 }

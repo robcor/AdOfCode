@@ -15,7 +15,7 @@ public class QuizTemplateResolver<T extends Numerable> implements QuizResolver {
 
     private final String fileName;
     private Predicate<T> isOk;
-    Function<String, T> parse;
+    private Function<String, T> parse;
 
 
     public QuizTemplateResolver(String fileName, Predicate<T> isOk, Function<String, T> parse) {

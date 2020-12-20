@@ -12,7 +12,7 @@ public class QuizD0201Resolver extends QuizD02 {
     }
 
     @Override
-    public boolean checkValue(DayTwoData data) {
+    public boolean checkValue(DayTwoData data, Object dummy) {
         int count = StringUtils.countMatches( data.getPassword(), data.getLetter() );
 
         int minOccur = data.getFirstInt();
