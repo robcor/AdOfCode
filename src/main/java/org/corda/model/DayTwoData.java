@@ -1,7 +1,9 @@
 package org.corda.model;
 
 
-public class DayTwoData {
+import org.corda.Numerable;
+
+public class DayTwoData extends Numerable {
     private int firstInt;
     private int secondInt;
     private String letter;

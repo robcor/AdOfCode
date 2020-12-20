@@ -25,6 +25,9 @@ public class FileHelper {
 
     public static List<String> readAllLines(String fileName) throws IOException {
         try (InputStream resource = getInputStream( fileName )) {
+            if (resource == null)
+                throw new IOException( "'" + fileName + "'"+ ": file not found" );
+
             List<String> stringList =
                 new BufferedReader(
                     new InputStreamReader( resource, StandardCharsets.UTF_8 ) )

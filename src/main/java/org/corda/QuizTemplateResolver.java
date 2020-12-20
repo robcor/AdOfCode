@@ -7,7 +7,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class QuizTemplateResolver<T> implements QuizResolver {
+public class QuizTemplateResolver<T extends Numerable> implements QuizResolver {
 
 
     private final String fileName;
@@ -22,19 +22,33 @@ public class QuizTemplateResolver<T> implements QuizResolver {
     }
 
 
-    <T> List<T> loadData(String fileName, Function<String, T> parse) throws IOException {
-        List<String> stringList = FileHelper.readAllLines( fileName );
-
-        List<T> result = stringList.stream()
-            .map( s -> parse.apply( s ) )
-            .collect( Collectors.toList() );
+    public List<T> loadData() throws IOException {
+        List<String> stringList = loadStringList(  );
+        List<T> result = parseAllLines( stringList );
+        setSequence( result );
 
         return result;
     }
 
+    private List<String> loadStringList() throws IOException {
+        return FileHelper.readAllLines( fileName );
+    }
+
+    private List<T> parseAllLines(List<String> stringList) {
+        return stringList.stream()
+            .map( s -> parse.apply( s ) )
+            .collect( Collectors.toList() );
+    }
+
+    // add sequence numer on each value of list
+    private void setSequence(List<T> result) {
+        long idx = 0;
+        for (T data : result) data.setSequence( idx++ );
+    }
+
     @Override
     public long resolve() throws IOException {
-        List<T> TList = loadData( fileName, parse );
+        List<T> TList = loadData( );
 
         return TList.stream()
             .filter( data -> isOk.test( data ) )

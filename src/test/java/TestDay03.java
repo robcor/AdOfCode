@@ -1,8 +1,12 @@
+import org.corda.QuizD0201Resolver;
 import org.corda.QuizD0301Resolver;
 import org.corda.QuizD0302Resolver;
+import org.corda.model.DayThreeData;
+import org.corda.model.DayTwoData;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TestDay03 {
 
@@ -32,6 +36,13 @@ class TestDay03 {
         assertEquals( 42, result );
 
         System.out.println( "D3Q2 result: " + result );
+    }
+
+    @Test
+    void checkValue_1() throws Exception {
+        DayThreeData dayThreeData = new DayThreeData( "#...#...#..#...#...#..#...#...#..#...#...#..#...#...#..#...#...#.." );
+        QuizD0301Resolver resolver = new QuizD0301Resolver("FAKE filename");
+        assertTrue( resolver.checkValue( dayThreeData ) );
     }
 
 

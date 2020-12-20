@@ -41,7 +41,7 @@ class TestDay02 {
     1-3 a: kbade     is valid: position 1 not contains a and position 3 does.
      */
     @Test
-    void checkTest_1() throws Exception {
+    void checkValue_1() throws Exception {
         DayTwoData dayTwo = new DayTwoData( 1, 3, "a", "abcde" );
         QuizD0201Resolver resolver = new QuizD0201Resolver("alfa");
         assertTrue( resolver.checkValue( dayTwo ) );

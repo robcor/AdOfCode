@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public abstract class Quiz<T> implements QuizResolver {
+public abstract class Quiz<T extends Numerable> implements QuizResolver {
     protected QuizTemplateResolver<T> quizTemplate;
 
     public Quiz(String fileName) {
