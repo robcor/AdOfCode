@@ -6,9 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TestDay03 {
 
-    @Disabled
+    // DOC: how to disable test with junit 5 (former: @Ignore)
+    // @Disabled
     @Test
-    void firstQuizRefactoring() throws Exception {
+    void firstQuiz() throws Exception {
 
         QuizD0301Resolver resolver = new QuizD0301Resolver( "daythree.txt" );
 
@@ -19,9 +20,10 @@ class TestDay03 {
         System.out.println( "D3Q1 result: " + result );
     }
 
-    @Disabled
+    // DOC: how to disable test with junit 5 (former: @Ignore)
+    // @Disabled
     @Test
-    void secondQuizRefactoring() throws Exception {
+    void secondQuiz() throws Exception {
 
         QuizD0302Resolver resolver = new QuizD0302Resolver( "daythree.txt" );
 
