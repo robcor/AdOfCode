@@ -2,9 +2,9 @@ package org.corda;
 
 import org.corda.model.DayThreeData;
 
-public abstract class Quiz03 extends Quiz<DayThreeData> {
+public abstract class QuizD03 extends Quiz<DayThreeData> {
 
-    public Quiz03(String fileName) {
+    public QuizD03(String fileName) {
         super( fileName );
     }
 

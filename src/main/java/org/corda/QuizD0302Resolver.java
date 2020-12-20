@@ -3,11 +3,9 @@ package org.corda;
 
 import org.corda.model.DayThreeData;
 
-public class Quiz0301Resolver extends Quiz03 {
-    private QuizTemplateResolver quizTemplate;
+public class QuizD0302Resolver extends QuizD03 {
 
-
-    public Quiz0301Resolver(String fileName) {
+    public QuizD0302Resolver(String fileName) {
         super( fileName );
     }
 

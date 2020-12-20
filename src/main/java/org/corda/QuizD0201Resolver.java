@@ -4,9 +4,9 @@ package org.corda;
 import org.apache.commons.lang3.StringUtils;
 import org.corda.model.DayTwoData;
 
-public class Quiz0201Resolver extends Quiz02  {
+public class QuizD0201Resolver extends QuizD02 {
 
-    public Quiz0201Resolver(String fileName) {
+    public QuizD0201Resolver(String fileName) {
         super( fileName );
     }
 

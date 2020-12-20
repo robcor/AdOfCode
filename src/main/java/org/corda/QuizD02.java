@@ -4,9 +4,9 @@ import org.corda.model.DayTwoData;
 
 import java.util.function.Function;
 
-public abstract class Quiz02 extends Quiz<DayTwoData> {
+public abstract class QuizD02 extends Quiz<DayTwoData> {
 
-    public Quiz02(String fileName) {
+    public QuizD02(String fileName) {
         super( fileName );
     }
 

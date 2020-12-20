@@ -1,5 +1,5 @@
-import org.corda.Quiz0301Resolver;
-import org.corda.Quiz0302Resolver;
+import org.corda.QuizD0301Resolver;
+import org.corda.QuizD0302Resolver;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,7 +10,7 @@ class TestDay03 {
     @Test
     void firstQuizRefactoring() throws Exception {
 
-        Quiz0301Resolver resolver = new Quiz0301Resolver( "daythree.txt" );
+        QuizD0301Resolver resolver = new QuizD0301Resolver( "daythree.txt" );
 
         long result = resolver.resolve();
 
@@ -23,7 +23,7 @@ class TestDay03 {
     @Test
     void secondQuizRefactoring() throws Exception {
 
-        Quiz0302Resolver resolver = new Quiz0302Resolver( "daythree.txt" );
+        QuizD0302Resolver resolver = new QuizD0302Resolver( "daythree.txt" );
 
         long result = resolver.resolve();
 

@@ -1,23 +1,17 @@
-import org.apache.commons.lang3.StringUtils;
-import org.corda.Facade;
-import org.corda.NumberHelper;
-import org.corda.Quiz0201Resolver;
-import org.corda.Quiz0202Resolver;
+import org.corda.QuizD0201Resolver;
+import org.corda.QuizD0202Resolver;
 import org.corda.model.DayTwoData;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.List;
-import java.util.function.Predicate;
-
 class TestDay02 {
 
     @Test
     void firstQuizRefactoring() throws Exception {
 
-        Quiz0201Resolver resolver = new Quiz0201Resolver( "daytwo.txt" );
+        QuizD0201Resolver resolver = new QuizD0201Resolver( "daytwo.txt" );
 
         long result = resolver.resolve();
 
@@ -29,7 +23,7 @@ class TestDay02 {
     @Test
     void secondQuizRefactoring() throws Exception {
 
-        Quiz0202Resolver resolver = new Quiz0202Resolver( "daytwo.txt" );
+        QuizD0202Resolver resolver = new QuizD0202Resolver( "daytwo.txt" );
 
         long result = resolver.resolve();
 
@@ -49,35 +43,35 @@ class TestDay02 {
     @Test
     void checkTest_1() throws Exception {
         DayTwoData dayTwo = new DayTwoData( 1, 3, "a", "abcde" );
-        Quiz0201Resolver resolver = new Quiz0201Resolver("alfa");
+        QuizD0201Resolver resolver = new QuizD0201Resolver("alfa");
         assertTrue( resolver.checkValue( dayTwo ) );
     }
 
     @Test
     void checkTest_2() throws Exception {
         DayTwoData dayTwo = new DayTwoData( 1, 3, "b", "cdefg" );
-        Quiz0202Resolver resolver = new Quiz0202Resolver("alfa");
+        QuizD0202Resolver resolver = new QuizD0202Resolver("alfa");
         assertFalse( resolver.checkValue( dayTwo ) );
     }
 
     @Test
     void checkTest_3() throws Exception {
         DayTwoData dayTwo = new DayTwoData( 2, 9, "c", "ccccccccc" );
-        Quiz0202Resolver resolver = new Quiz0202Resolver("alfa");
+        QuizD0202Resolver resolver = new QuizD0202Resolver("alfa");
         assertFalse( resolver.checkValue( dayTwo ) );
     }
 
     @Test
     void checkTest_4() throws Exception {
         DayTwoData dayTwo = new DayTwoData( 3, 7, "d", "fghjklb" );
-        Quiz0202Resolver resolver = new Quiz0202Resolver("alfa");
+        QuizD0202Resolver resolver = new QuizD0202Resolver("alfa");
         assertFalse( resolver.checkValue( dayTwo ) );;
     }
 
     @Test
     void checkTest_5() throws Exception {
         DayTwoData dayTwo = new DayTwoData( 1, 3, "a", "kbade" );
-        Quiz0202Resolver resolver = new Quiz0202Resolver("alfa");
+        QuizD0202Resolver resolver = new QuizD0202Resolver("alfa");
         assertTrue( resolver.checkValue( dayTwo ) );
     }
 
