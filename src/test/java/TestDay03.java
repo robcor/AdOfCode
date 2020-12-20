@@ -1,5 +1,6 @@
 import org.corda.QuizD0301Resolver;
 import org.corda.QuizD0302Resolver;
+import org.corda.model.ConfigD03;
 import org.corda.model.DayThreeData;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -100,44 +101,46 @@ class TestDay03 {
 
         QuizD0302Resolver resolver = new QuizD0302Resolver( "FAKE filename" );
 
+        ConfigD03 config = new ConfigD03( 3, 1 );
+
         // simple
         dayThreeData.setSequence( 1 );
-        assertFalse( resolver.checkValue( dayThreeData , null  ) );
+        assertFalse( resolver.checkValue( dayThreeData, config ) );
 
         dayThreeData.setSequence( 4 );
-        assertFalse( resolver.checkValue( dayThreeData, null  ) );
+        assertFalse( resolver.checkValue( dayThreeData, config ) );
 
         dayThreeData.setSequence( 5 );
-        assertTrue( resolver.checkValue( dayThreeData , null ) );
+        assertTrue( resolver.checkValue( dayThreeData, config ) );
 
         dayThreeData.setSequence( 10 );
-        assertTrue( resolver.checkValue( dayThreeData, null  ) );
+        assertTrue( resolver.checkValue( dayThreeData, config ) );
 
         // repeat
         dayThreeData.setSequence( inputLength + 1 );
-        assertFalse( resolver.checkValue( dayThreeData, null  ) );
+        assertFalse( resolver.checkValue( dayThreeData, config ) );
 
         dayThreeData.setSequence( inputLength + 4 );
-        assertFalse( resolver.checkValue( dayThreeData , null ) );
+        assertFalse( resolver.checkValue( dayThreeData, config ) );
 
         dayThreeData.setSequence( inputLength + 5 );
-        assertTrue( resolver.checkValue( dayThreeData , null ) );
+        assertTrue( resolver.checkValue( dayThreeData, config ) );
 
         dayThreeData.setSequence( inputLength + 10 );
-        assertTrue( resolver.checkValue( dayThreeData , null ) );
+        assertTrue( resolver.checkValue( dayThreeData, config ) );
 
         // repeat more
         dayThreeData.setSequence( inputLength * 5 + 1 );
-        assertFalse( resolver.checkValue( dayThreeData , null ) );
+        assertFalse( resolver.checkValue( dayThreeData, config ) );
 
         dayThreeData.setSequence( inputLength * 5 + 4 );
-        assertFalse( resolver.checkValue( dayThreeData , null ) );
+        assertFalse( resolver.checkValue( dayThreeData, config ) );
 
         dayThreeData.setSequence( inputLength * 5 + 5 );
-        assertTrue( resolver.checkValue( dayThreeData , null ) );
+        assertTrue( resolver.checkValue( dayThreeData, config ) );
 
         dayThreeData.setSequence( inputLength * 5 + 10 );
-        assertTrue( resolver.checkValue( dayThreeData , null ) );
+        assertTrue( resolver.checkValue( dayThreeData, config ) );
 
     }
 
