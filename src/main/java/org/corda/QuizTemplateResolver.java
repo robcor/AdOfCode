@@ -1,6 +1,9 @@
 package org.corda;
 
 
+import org.corda.helper.FileHelper;
+import org.corda.model.Numerable;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.function.Function;
@@ -42,15 +45,15 @@ public class QuizTemplateResolver<T extends Numerable> implements QuizResolver {
 
     // add sequence numer on each value of list
     private void setSequence(List<T> result) {
-        long idx = 0;
+        int idx = 0;
         for (T data : result) data.setSequence( idx++ );
     }
 
     @Override
     public long resolve() throws IOException {
-        List<T> TList = loadData( );
+        List<T> aTList = loadData( );
 
-        return TList.stream()
+        return aTList.stream()
             .filter( data -> isOk.test( data ) )
             .count();
     }

@@ -1,6 +1,7 @@
 package org.corda;
 
 
+import org.corda.helper.StringHelper;
 import org.corda.model.DayTwoData;
 
 public class QuizD0202Resolver extends QuizD02 {
@@ -18,12 +19,16 @@ public class QuizD0202Resolver extends QuizD02 {
      */
     @Override
     public boolean checkValue(DayTwoData data) {
-        String first = String.valueOf( data.getPassword().charAt( data.getFirstInt() - 1 ) );
-        String second = String.valueOf( data.getPassword().charAt( data.getSecondInt() - 1 ) );
+        int firstPosition = data.getFirstInt();
+        String first = StringHelper.getLetterAt( data.getPassword(), firstPosition );
+        int secondPosition = data.getSecondInt();
+        String second = StringHelper.getLetterAt( data.getPassword(), secondPosition );
 
         String letter = data.getLetter();
         return (letter.equals( first ) && !letter.equals( second )) || (!letter.equals( first ) && letter.equals( second ));
     }
+
+
 
 
 }

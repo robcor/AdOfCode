@@ -1,7 +1,5 @@
-package org.corda;
+package org.corda.model;
 
-
-import org.corda.model.DayTwoData;
 
 public interface ParseDayTwo {
     public DayTwoData doIt(String s);

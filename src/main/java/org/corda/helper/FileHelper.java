@@ -1,5 +1,7 @@
-package org.corda;
+package org.corda.helper;
 
+
+import org.corda.Main;
 
 import java.io.BufferedReader;
 import java.io.IOException;

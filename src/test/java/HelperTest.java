@@ -1,49 +1,59 @@
-import org.corda.FileHelper;
-import org.corda.NumberHelper;
+import org.corda.helper.FileHelper;
+import org.corda.helper.NumberHelper;
+import org.corda.helper.StringHelper;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HelperTest {
+class HelperTest {
 
 
     @Test
-    public void loadFile() throws Exception {
+    void loadFile() throws Exception {
         List<String> result = FileHelper.readAllLines( "testNumberList.txt" );
 
-        assertTrue( result.size() == 6 );
+        assertEquals( 6, result.size() );
     }
-    
+
     @Test
-    public void getInputStream() throws Exception {
+    void getInputStream() throws Exception {
         InputStream result = FileHelper.getInputStream( "testNumberList.txt" );
-        
-        assertTrue( result != null );
+
+        assertNotNull( result );
     }
 
 
     @Test
-    public void stringListToInteger() throws Exception {
-        List<String> stringList = new ArrayList<>(  );
+    void stringListToInteger() throws Exception {
+        List<String> stringList = new ArrayList<>();
         stringList.add( "10" );
         stringList.add( "20" );
         List<Integer> intList = NumberHelper.stringListToInteger( stringList );
 
 
-        assertTrue( intList.size() == 2);
+        assertEquals( 2, intList.size() );
     }
 
     @Test
-    public void stringListToIntArray() throws Exception {
-        List<String> stringList = new ArrayList<>(  );
+    void stringListToIntArray() throws Exception {
+        List<String> stringList = new ArrayList<>();
         stringList.add( "10" );
         stringList.add( "20" );
         int[] intArray = NumberHelper.stringListToIntArray( stringList );
 
-        assertTrue( intArray.length == 2);
+        assertEquals( 2, intArray.length );
+    }
+
+    @Test
+    void getLetterAt() throws Exception {
+        String toTest = "abcdefg";
+
+        assertEquals( "a", StringHelper.getLetterAt( toTest, 1 ) );
+        assertEquals( "c", StringHelper.getLetterAt( toTest, 3 ) );
     }
 
 

@@ -2,11 +2,9 @@ package org.corda;
 
 import org.corda.model.DayTwoData;
 
-import java.util.function.Function;
-
 public abstract class QuizD02 extends Quiz<DayTwoData> {
 
-    public QuizD02(String fileName) {
+    protected QuizD02(String fileName) {
         super( fileName );
     }
 

@@ -1,5 +1,7 @@
 package org.corda;
 
+import org.corda.model.Numerable;
+
 import java.io.IOException;
 import java.util.function.Function;
 import java.util.function.Predicate;
