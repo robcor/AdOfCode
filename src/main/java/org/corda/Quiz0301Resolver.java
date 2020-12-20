@@ -11,18 +11,17 @@ public class Quiz0301Resolver extends Quiz<DayThreeData> {
 
 
     public Quiz0301Resolver(String fileName) {
-        Predicate<DayThreeData> isOk = s -> checkValue( s );
-        Function<String, DayThreeData> parse = s -> parseInput( s );
-        quizTemplate = new QuizTemplateResolver( fileName, isOk, parse );
+        super(fileName);
+
     }
 
     @Override
-    protected boolean checkValue(DayThreeData data) {
+    public boolean checkValue(DayThreeData data) {
         return false;
     }
 
     @Override
-    protected DayThreeData parseInput(String input) {
+    public DayThreeData parseInput(String input) {
         return null;
     }
 }

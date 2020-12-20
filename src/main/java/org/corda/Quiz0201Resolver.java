@@ -4,32 +4,37 @@ package org.corda;
 import org.apache.commons.lang3.StringUtils;
 import org.corda.model.DayTwoData;
 
-import java.io.IOException;
-import java.util.function.Function;
-import java.util.function.Predicate;
-
-public class Quiz0201Resolver extends Quiz02 implements QuizResolver {
-    private QuizTemplateResolver quizTemplate;
-
+public class Quiz0201Resolver extends Quiz<DayTwoData> implements QuizResolver {
 
     public Quiz0201Resolver(String fileName) {
-        Predicate<DayTwoData> isOk = s -> checkPassword( s );
-        Function<String, DayTwoData> parse = getStringDayTwoDataFunction();
-        quizTemplate = new QuizTemplateResolver( fileName, isOk, parse );
+        super( fileName );
     }
 
     @Override
-    public long resolve() throws IOException {
-        return quizTemplate.resolve();
-    }
-
-    public boolean checkPassword(DayTwoData data) {
-
+    public boolean checkValue(DayTwoData data) {
         int count = StringUtils.countMatches( data.getPassword(), data.getLetter() );
 
         int minOccur = data.getFirstInt();
         int maxOccur = data.getSecondInt();
         return NumberHelper.isInRange( count, minOccur, maxOccur );
-
     }
+
+    @Override
+    public DayTwoData parseInput(String input) {
+        // EXAMPLE
+        // "4-10 m: mmmjmmmmmmmm"
+        String[] mainParts = input.split( " " );
+        // 0: 4-10
+        String[] intPair = mainParts[0].split( "-" );
+        int firstInt = Integer.parseInt( intPair[0] );
+        int secondInt = Integer.parseInt( intPair[1] );
+        // 1: m:
+        String letter = String.valueOf( mainParts[1].charAt( 0 ) );
+        // 2: mmmjmmmmmmmm
+        String password = mainParts[2];
+
+
+        return new DayTwoData( firstInt, secondInt, letter, password );
+    }
+
 }

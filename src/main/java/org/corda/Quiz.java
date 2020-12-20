@@ -1,15 +1,21 @@
 package org.corda;
 
-import org.corda.model.DayThreeData;
-
 import java.io.IOException;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public abstract class Quiz<T> implements QuizResolver {
     protected QuizTemplateResolver<T> quizTemplate;
 
-    protected abstract boolean checkValue(T data);
+    public Quiz(String fileName) {
+        Predicate<T> isOk = s -> checkValue( s );
+        Function<String, T> parse = s -> parseInput( s );
+        quizTemplate = new QuizTemplateResolver<T>( fileName, isOk, parse );
+    }
 
-    protected abstract DayThreeData parseInput(String input);
+    public abstract boolean checkValue(T data);
+
+    public abstract T parseInput(String input);
 
     @Override
     public long resolve() throws IOException {
