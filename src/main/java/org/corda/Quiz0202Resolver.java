@@ -1,7 +1,6 @@
 package org.corda;
 
 
-import org.apache.commons.lang3.StringUtils;
 import org.corda.model.DayTwoData;
 
 import java.io.IOException;

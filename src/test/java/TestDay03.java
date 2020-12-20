@@ -10,25 +10,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
      @Test
      void firstQuizRefactoring() throws Exception {
 
-         Quiz0301Resolver resolver = new Quiz0301Resolver( "daytwo.txt" );
+         Quiz0301Resolver resolver = new Quiz0301Resolver( "daythree.txt" );
 
          long result = resolver.resolve();
 
-         assertEquals( 614, result );
+         assertEquals( 42, result );
 
-         System.out.println( "D2Q1 result: " + result );
+         System.out.println( "D3Q1 result: " + result );
      }
 
      @Test
      void secondQuizRefactoring() throws Exception {
 
-         Quiz0302Resolver resolver = new Quiz0302Resolver( "daytwo.txt" );
+         Quiz0302Resolver resolver = new Quiz0302Resolver( "daythree.txt" );
 
          long result = resolver.resolve();
 
-         assertEquals( 354, result );
+         assertEquals( 42, result );
 
-         System.out.println( "D2Q2 result: " + result );
+         System.out.println( "D3Q2 result: " + result );
      }
 
 
