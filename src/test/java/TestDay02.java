@@ -9,9 +9,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class TestDay02 {
 
     @Test
-    void firstQuizRefactoring() throws Exception {
+    void firstQuiz() throws Exception {
 
-        QuizD0201Resolver resolver = new QuizD0201Resolver( "daytwo.txt" );
+        QuizD0201Resolver resolver = new QuizD0201Resolver( "day02input.txt" );
 
         long result = resolver.resolve();
 
@@ -21,9 +21,9 @@ class TestDay02 {
     }
 
     @Test
-    void secondQuizRefactoring() throws Exception {
+    void secondQuiz() throws Exception {
 
-        QuizD0202Resolver resolver = new QuizD0202Resolver( "daytwo.txt" );
+        QuizD0202Resolver resolver = new QuizD0202Resolver( "day02input.txt" );
 
         long result = resolver.resolve();
 

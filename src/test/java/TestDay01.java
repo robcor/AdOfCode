@@ -10,7 +10,7 @@ public class TestDay01 {
     @Test
     void firstQuiz() throws Exception {
 
-        int[] intArray = Facade.sortedIntFromFile( "dayone.txt" );
+        int[] intArray = Facade.sortedIntFromFile( "day01input.txt" );
 
         long result = 0;
         for (int indexA = 0; indexA < intArray.length; indexA++) {
@@ -36,7 +36,7 @@ public class TestDay01 {
     @Test
     void secondQuiz() throws Exception {
 
-        int[] intArray = Facade.sortedIntFromFile( "dayone.txt" );
+        int[] intArray = Facade.sortedIntFromFile( "day01input.txt" );
 
         long result = 0;
         for (int indexA = 0; indexA < intArray.length; indexA++) {

@@ -14,7 +14,7 @@ class TestDay03 {
     @Test
     void firstQuiz() throws Exception {
 
-        QuizD0301Resolver resolver = new QuizD0301Resolver( "daythree.txt" , null);
+        QuizD0301Resolver resolver = new QuizD0301Resolver( "day03input.txt" , null);
 
         long result = resolver.resolve();
 
@@ -30,14 +30,13 @@ class TestDay03 {
     4) Right 7, down 1.
     5) Right 1, down 2.
      */
-    // @Disabled
     @Test
     void secondQuiz() throws Exception {
-        long result1 = resultByConfig( new ConfigD03( 1, 1 ), "daythree.txt" );
-        long result2 = resultByConfig( new ConfigD03( 3, 1 ), "daythree.txt" );
-        long result3 = resultByConfig( new ConfigD03( 5, 1 ), "daythree.txt" );
-        long result4 = resultByConfig( new ConfigD03( 7, 1 ), "daythree.txt" );
-        long result5 = resultByConfig( new ConfigD03( 1, 2 ), "daythree.txt" );
+        long result1 = resultByConfig( new ConfigD03( 1, 1 ), "day03input.txt" );
+        long result2 = resultByConfig( new ConfigD03( 3, 1 ), "day03input.txt" );
+        long result3 = resultByConfig( new ConfigD03( 5, 1 ), "day03input.txt" );
+        long result4 = resultByConfig( new ConfigD03( 7, 1 ), "day03input.txt" );
+        long result5 = resultByConfig( new ConfigD03( 1, 2 ), "day03input.txt" );
 
         long result = result1 * result2 * result3 * result4 * result5;
         assertEquals( 9406609920L, result );
@@ -45,7 +44,6 @@ class TestDay03 {
         System.out.println( "D3Q2 result: " + result );
     }
 
-    // "daythree.txt"
     private long resultByConfig(ConfigD03 config1, String fileName) throws java.io.IOException {
         QuizD0302Resolver resolver = new QuizD0302Resolver( fileName, config1);
         long result = resolver.resolve();
@@ -221,15 +219,15 @@ class TestDay03 {
      */
     @Test
     void secondQuizExample() throws Exception {
-        long result1 = resultByConfig( new ConfigD03( 1, 1 ), "daythreeexample.txt" );
+        long result1 = resultByConfig( new ConfigD03( 1, 1 ), "day03inputexample.txt" );
         assertEquals( 2, result1 );
-        long result2 = resultByConfig( new ConfigD03( 3, 1 ), "daythreeexample.txt" );
+        long result2 = resultByConfig( new ConfigD03( 3, 1 ), "day03inputexample.txt" );
         assertEquals( 7, result2 );
-        long result3 = resultByConfig( new ConfigD03( 5, 1 ), "daythreeexample.txt" );
+        long result3 = resultByConfig( new ConfigD03( 5, 1 ), "day03inputexample.txt" );
         assertEquals( 3, result3 );
-        long result4 = resultByConfig( new ConfigD03( 7, 1 ), "daythreeexample.txt" );
+        long result4 = resultByConfig( new ConfigD03( 7, 1 ), "day03inputexample.txt" );
         assertEquals( 4, result4 );
-        long result5 = resultByConfig( new ConfigD03( 1, 2 ), "daythreeexample.txt" );
+        long result5 = resultByConfig( new ConfigD03( 1, 2 ), "day03inputexample.txt" );
         assertEquals( 2, result5 );
 
         long result = result1 * result2 * result3 * result4 * result5;
