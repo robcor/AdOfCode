@@ -1,7 +1,5 @@
-import org.corda.QuizD0201Resolver;
 import org.corda.QuizTemplateResolver;
-import org.corda.model.DayThreeData;
-import org.corda.model.DayTwoData;
+import org.corda.model.Day03Data;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -14,9 +12,9 @@ public class QuizTemplateResolverTest {
 
     @Test
     void loadData() throws Exception {
-        QuizTemplateResolver<DayThreeData> resolver = makeDummyTemplateResolver();
+        QuizTemplateResolver<Day03Data> resolver = makeDummyTemplateResolver();
 
-        List<DayThreeData> dataList = resolver.loadData();
+        List<Day03Data> dataList = resolver.loadData();
         
         assertEquals(  6, dataList.size());
         assertEquals(  "200", dataList.get( 5 ).getInput());
@@ -24,10 +22,10 @@ public class QuizTemplateResolverTest {
 
     }
 
-    private QuizTemplateResolver<DayThreeData> makeDummyTemplateResolver() {
-        Predicate<DayThreeData> isOk = s -> false;
-        Function<String, DayThreeData> parse = s -> new DayThreeData( s );
-        QuizTemplateResolver<DayThreeData> templateResolver = new QuizTemplateResolver<DayThreeData>(
+    private QuizTemplateResolver<Day03Data> makeDummyTemplateResolver() {
+        Predicate<Day03Data> isOk = s -> false;
+        Function<String, Day03Data> parse = s -> new Day03Data( s );
+        QuizTemplateResolver<Day03Data> templateResolver = new QuizTemplateResolver<Day03Data>(
             "testNumberList.txt",
             isOk,
             parse );

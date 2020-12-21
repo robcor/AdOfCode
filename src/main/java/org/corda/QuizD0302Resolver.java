@@ -3,7 +3,7 @@ package org.corda;
 
 import org.corda.helper.StringHelper;
 import org.corda.model.ConfigD03;
-import org.corda.model.DayThreeData;
+import org.corda.model.Day03Data;
 
 public class QuizD0302Resolver extends QuizD03 {
 
@@ -12,7 +12,7 @@ public class QuizD0302Resolver extends QuizD03 {
     }
 
     @Override
-    public boolean checkValue(DayThreeData data) {
+    public boolean checkValue(Day03Data data) {
 
         // ycheck
         if (data.getSequence() % config.getyDelta() != 0) {

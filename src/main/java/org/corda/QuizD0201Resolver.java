@@ -3,7 +3,7 @@ package org.corda;
 
 import org.apache.commons.lang3.StringUtils;
 import org.corda.helper.NumberHelper;
-import org.corda.model.DayTwoData;
+import org.corda.model.Day02Data;
 
 public class QuizD0201Resolver extends QuizD02 {
 
@@ -12,7 +12,7 @@ public class QuizD0201Resolver extends QuizD02 {
     }
 
     @Override
-    public boolean checkValue(DayTwoData data) {
+    public boolean checkValue(Day02Data data) {
         int count = StringUtils.countMatches( data.getPassword(), data.getLetter() );
 
         int minOccur = data.getFirstInt();

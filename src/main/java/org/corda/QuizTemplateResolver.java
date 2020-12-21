@@ -46,7 +46,12 @@ public class QuizTemplateResolver<T extends Numerable> implements QuizResolver {
     // add sequence numer on each value of list
     private void setSequence(List<T> result) {
         int idx = 0;
-        for (T data : result) data.setSequence( idx++ );
+        for (T data : result) {
+            if (data != null) {
+                data.setSequence( idx++ );
+            }
+        }
+
     }
 
     @Override

@@ -1,6 +1,6 @@
 import org.corda.QuizD0201Resolver;
 import org.corda.QuizD0202Resolver;
-import org.corda.model.DayTwoData;
+import org.corda.model.Day02Data;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -42,35 +42,35 @@ class TestDay02 {
      */
     @Test
     void checkValue_1() throws Exception {
-        DayTwoData dayTwo = new DayTwoData( 1, 3, "a", "abcde" );
+        Day02Data dayTwo = new Day02Data( 1, 3, "a", "abcde" );
         QuizD0201Resolver resolver = new QuizD0201Resolver("alfa");
         assertTrue( resolver.checkValue( dayTwo  ) );
     }
 
     @Test
     void checkTest_2() throws Exception {
-        DayTwoData dayTwo = new DayTwoData( 1, 3, "b", "cdefg" );
+        Day02Data dayTwo = new Day02Data( 1, 3, "b", "cdefg" );
         QuizD0202Resolver resolver = new QuizD0202Resolver("alfa");
         assertFalse( resolver.checkValue( dayTwo  ) );
     }
 
     @Test
     void checkTest_3() throws Exception {
-        DayTwoData dayTwo = new DayTwoData( 2, 9, "c", "ccccccccc" );
+        Day02Data dayTwo = new Day02Data( 2, 9, "c", "ccccccccc" );
         QuizD0202Resolver resolver = new QuizD0202Resolver("alfa");
         assertFalse( resolver.checkValue( dayTwo  ) );
     }
 
     @Test
     void checkTest_4() throws Exception {
-        DayTwoData dayTwo = new DayTwoData( 3, 7, "d", "fghjklb" );
+        Day02Data dayTwo = new Day02Data( 3, 7, "d", "fghjklb" );
         QuizD0202Resolver resolver = new QuizD0202Resolver("alfa");
         assertFalse( resolver.checkValue( dayTwo  ) );;
     }
 
     @Test
     void checkTest_5() throws Exception {
-        DayTwoData dayTwo = new DayTwoData( 1, 3, "a", "kbade" );
+        Day02Data dayTwo = new Day02Data( 1, 3, "a", "kbade" );
         QuizD0202Resolver resolver = new QuizD0202Resolver("alfa");
         assertTrue( resolver.checkValue( dayTwo  ) );
     }

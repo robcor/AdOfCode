@@ -1,14 +1,14 @@
 package org.corda.model;
 
 
-public class DayTwoData extends Numerable {
+public class Day02Data extends Numerable {
     private int firstInt;
     private int secondInt;
     private String letter;
     private String password;
 
 
-    public DayTwoData(int firstInt, int secondInt, String letter, String password) {
+    public Day02Data(int firstInt, int secondInt, String letter, String password) {
         this.firstInt = firstInt;
         this.secondInt = secondInt;
         this.letter = letter;

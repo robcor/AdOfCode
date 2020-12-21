@@ -2,8 +2,7 @@ package org.corda;
 
 
 import org.corda.helper.StringHelper;
-import org.corda.model.DayTwoData;
-import org.corda.model.Numerable;
+import org.corda.model.Day02Data;
 
 public class QuizD0202Resolver extends QuizD02 {
     private QuizTemplateResolver quizTemplate;
@@ -19,7 +18,7 @@ public class QuizD0202Resolver extends QuizD02 {
     Exactly one of these positions must contain the given letter
      */
     @Override
-    public boolean checkValue(DayTwoData data) {
+    public boolean checkValue(Day02Data data) {
         int firstPosition = data.getFirstInt();
         String first = StringHelper.getLetterAt( data.getPassword(), firstPosition );
         int secondPosition = data.getSecondInt();

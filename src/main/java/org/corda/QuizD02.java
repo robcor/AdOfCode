@@ -1,15 +1,15 @@
 package org.corda;
 
-import org.corda.model.DayTwoData;
+import org.corda.model.Day02Data;
 
-public abstract class QuizD02 extends Quiz<DayTwoData, Object> {
+public abstract class QuizD02 extends Quiz<Day02Data, Object> {
 
     protected QuizD02(String fileName) {
         super( fileName , null);
     }
 
     @Override
-    public DayTwoData parseInput(String input) {
+    public Day02Data parseInput(String input) {
         // EXAMPLE
         // "4-10 m: mmmjmmmmmmmm"
         String[] mainParts = input.split( " " );
@@ -23,6 +23,6 @@ public abstract class QuizD02 extends Quiz<DayTwoData, Object> {
         String password = mainParts[2];
 
 
-        return new DayTwoData( firstInt, secondInt, letter, password );
+        return new Day02Data( firstInt, secondInt, letter, password );
     }
 }
