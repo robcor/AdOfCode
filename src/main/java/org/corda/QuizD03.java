@@ -8,8 +8,8 @@ public abstract class QuizD03 extends Quiz<DayThreeData, ConfigD03> {
     static final String OPEN_SQUARE = ".";
     static final String TREE = "#";
 
-    protected QuizD03(String fileName) {
-        super( fileName, null);
+    protected QuizD03(String fileName, ConfigD03 config) {
+        super( fileName, config);
     }
 
     @Override

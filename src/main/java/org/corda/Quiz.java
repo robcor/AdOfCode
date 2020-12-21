@@ -8,14 +8,16 @@ import java.util.function.Predicate;
 
 public abstract class Quiz<T extends Numerable, C> implements QuizResolver {
     protected QuizTemplateResolver<T> quizTemplate;
+    protected C config;
 
     public Quiz(String fileName, C config) {
-        Predicate<T> isOk = s -> checkValue( s , config);
+        Predicate<T> isOk = s -> checkValue( s );
         Function<String, T> parse = s -> parseInput( s );
         quizTemplate = new QuizTemplateResolver<T>( fileName, isOk, parse);
+        this.config =  config;
     }
 
-    public abstract boolean checkValue(T data, C config);
+    public abstract boolean checkValue(T data);
 
     public abstract T parseInput(String input);
 

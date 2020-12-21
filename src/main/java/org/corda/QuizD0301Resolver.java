@@ -9,12 +9,12 @@ public class QuizD0301Resolver extends QuizD03 {
 
 
 
-    public QuizD0301Resolver(String fileName) {
-        super( fileName );
+    public QuizD0301Resolver(String fileName, ConfigD03 config) {
+        super( fileName, config );
     }
 
     @Override
-    public boolean checkValue(DayThreeData data, ConfigD03 dummy) {
+    public boolean checkValue(DayThreeData data) {
         int position = (data.getSequence() * 3) % data.getInput().length();
         String letter = StringHelper.getLetterAtStandard( data.getInput(), position );
 

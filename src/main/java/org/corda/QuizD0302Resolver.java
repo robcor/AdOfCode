@@ -7,12 +7,12 @@ import org.corda.model.DayThreeData;
 
 public class QuizD0302Resolver extends QuizD03 {
 
-    public QuizD0302Resolver(String fileName) {
-        super( fileName );
+    public QuizD0302Resolver(String fileName, ConfigD03 config) {
+        super( fileName, config );
     }
 
     @Override
-    public boolean checkValue(DayThreeData data, ConfigD03 config) {
+    public boolean checkValue(DayThreeData data) {
 
         // ycheck
         if (data.getSequence() % config.getyDelta() != 0) {

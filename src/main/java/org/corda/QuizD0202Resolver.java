@@ -19,7 +19,7 @@ public class QuizD0202Resolver extends QuizD02 {
     Exactly one of these positions must contain the given letter
      */
     @Override
-    public boolean checkValue(DayTwoData data, Object dummy) {
+    public boolean checkValue(DayTwoData data) {
         int firstPosition = data.getFirstInt();
         String first = StringHelper.getLetterAt( data.getPassword(), firstPosition );
         int secondPosition = data.getSecondInt();
