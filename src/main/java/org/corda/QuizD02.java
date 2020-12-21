@@ -1,11 +1,12 @@
 package org.corda;
 
+import org.corda.helper.FileHelper;
 import org.corda.model.Day02Data;
 
 public abstract class QuizD02 extends Quiz<Day02Data, Object> {
 
     protected QuizD02(String fileName) {
-        super( fileName , null);
+        super( fileName , null, s -> FileHelper.readAllLines( s ) );
     }
 
     @Override

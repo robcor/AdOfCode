@@ -12,18 +12,20 @@ public abstract class Quiz<T extends Numerable, C> implements QuizResolver {
     protected QuizTemplateResolver<T> quizTemplate;
     protected C config;
 
-    public Quiz(String fileName, C config) {
+    public Quiz(String fileName, C config, Function<String, List<String>> readFile) {
         Predicate<T> isOk = s -> checkValue( s );
         Function<String, T> parse = s -> parseInput( s );
-        Function<String, List<String>> loadData = s -> loadStringList( s );
-        quizTemplate = new QuizTemplateResolver<T>( fileName, isOk, parse, loadData );
+        // Function<String, List<String>> readFile = s -> loadStringList( s );
+        quizTemplate = new QuizTemplateResolver<T>( fileName, isOk, parse, readFile );
         this.config = config;
     }
 
-    // load ine by line
+    // load line by line
+    /*
     private List<String> loadStringList(String fileName) {
         return FileHelper.readAllLines( fileName );
     }
+    */
 
     public abstract boolean checkValue(T data);
 

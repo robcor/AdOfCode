@@ -1,6 +1,7 @@
 package org.corda.helper;
 
 
+import org.apache.commons.lang3.StringUtils;
 import org.corda.Main;
 
 import java.io.BufferedReader;
@@ -55,7 +56,7 @@ public class FileHelper {
         while (iter.hasNext()) {
             String next = iter.next();
             if (next.isEmpty()) {
-                result.add( nextElement );
+                result.add( nextElement.trim() );
                 nextElement = "";
             } else {
                 nextElement = nextElement + " " + next;
@@ -63,7 +64,7 @@ public class FileHelper {
         }
 
         if  (!nextElement.isEmpty())  {
-            result.add( nextElement );
+            result.add( nextElement.trim()  );
         }
 
         return result;

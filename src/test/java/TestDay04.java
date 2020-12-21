@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class TestDay04 {
 
 
-    @Disabled("skeleton: not yet implemented")
+    //@Disabled("skeleton: not yet implemented")
     @Test
     void firstQuiz() throws Exception {
 
@@ -18,7 +18,7 @@ class TestDay04 {
 
         long result = resolver.resolve();
 
-        assertEquals( 42, result );
+        assertEquals( 208, result );
 
         System.out.println( "D4Q1 result: " + result );
     }
@@ -33,8 +33,6 @@ class TestDay04 {
         assertEquals( 2, result );
 
     }
-
-
 
     @Test
     void parseInput_smoketest() {

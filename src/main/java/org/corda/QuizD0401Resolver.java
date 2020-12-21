@@ -1,18 +1,16 @@
 package org.corda;
 
 import org.apache.commons.lang3.StringUtils;
+import org.corda.helper.FileHelper;
 import org.corda.model.Day04Data;
 
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class QuizD0401Resolver extends Quiz<Day04Data, Object> {
-    public QuizD0401Resolver(String fileName, Object config) {
-        super( fileName, config );
-    }
+public class QuizD0401Resolver extends QuizD04  {
 
     public QuizD0401Resolver(String fileName) {
-        super( fileName, null );
+        super( fileName );
     }
 
     @Override
