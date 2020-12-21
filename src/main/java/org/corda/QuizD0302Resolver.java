@@ -20,7 +20,7 @@ public class QuizD0302Resolver extends QuizD03 {
         }
 
         // xcheck
-        int position = (data.getSequence() * config.getxDelta()) % data.getInput().length();
+        int position = ((data.getSequence()/config.getyDelta()) * config.getxDelta()) % data.getInput().length();
         String letter = StringHelper.getLetterAtStandard( data.getInput(), position );
 
         if (OPEN_SQUARE.equals( letter )) {
