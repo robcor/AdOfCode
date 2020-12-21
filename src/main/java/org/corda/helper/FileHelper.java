@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,10 +27,11 @@ public class FileHelper {
         return stream;
     }
 
-    public static List<String> readAllLines(String fileName) throws IOException {
+    public static List<String> readAllLines(String fileName) {
         try (InputStream resource = getInputStream( fileName )) {
             if (resource == null)
-                throw new IOException( "'" + fileName + "'"+ ": file not found" );
+                return new ArrayList<>();
+            //throw new IOException( "'" + fileName + "'" + ": file not found" );
 
             List<String> stringList =
                 new BufferedReader(
@@ -37,6 +40,32 @@ public class FileHelper {
                     .collect( Collectors.toList() );
 
             return stringList;
+        } catch (IOException ioe) {
+            return new ArrayList<>();
         }
+    }
+
+    public static List<String> readLinesDividedByCr(String fileName) {
+        List<String> singleLines = readAllLines( fileName );
+        List<String> result = new ArrayList<>();
+
+        Iterator<String> iter = singleLines.iterator();
+
+        String nextElement = "";
+        while (iter.hasNext()) {
+            String next = iter.next();
+            if (next.isEmpty()) {
+                result.add( nextElement );
+                nextElement = "";
+            } else {
+                nextElement = nextElement + " " + next;
+            }
+        }
+
+        if  (!nextElement.isEmpty())  {
+            result.add( nextElement );
+        }
+
+        return result;
     }
 }

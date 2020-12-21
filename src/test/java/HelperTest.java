@@ -13,18 +13,26 @@ class HelperTest {
 
 
     @Test
-    void loadFile() throws Exception {
+    void getInputStream() throws Exception {
+        InputStream result = FileHelper.getInputStream( "testNumberList.txt" );
+
+        assertNotNull( result );
+    }
+
+    @Test
+    void readAllLines() throws Exception {
         List<String> result = FileHelper.readAllLines( "testNumberList.txt" );
 
         assertEquals( 6, result.size() );
     }
 
     @Test
-    void getInputStream() throws Exception {
-        InputStream result = FileHelper.getInputStream( "testNumberList.txt" );
+    void readLinesDividedByCr() throws Exception {
+        List<String> result = FileHelper.readLinesDividedByCr( "testGroupedLines.txt" );
 
-        assertNotNull( result );
+        assertEquals( 3, result.size() );
     }
+
 
 
     @Test

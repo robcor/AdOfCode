@@ -14,28 +14,30 @@ public class QuizTemplateResolver<T extends Numerable> implements QuizResolver {
 
 
     private final String fileName;
-    private Predicate<T> isOk;
-    private Function<String, T> parse;
+    private final Function<String, List<String>> loadStringList;
+    private final Predicate<T> isOk;
+    private final Function<String, T> parse;
 
 
-    public QuizTemplateResolver(String fileName, Predicate<T> isOk, Function<String, T> parse) {
+
+    public QuizTemplateResolver(String fileName,
+                                Predicate<T> isOk,
+                                Function<String, T> parse,
+                                Function<String, List<String>> loadStringList) {
         this.fileName = fileName;
         this.isOk = isOk;
         this.parse = parse;
+        this.loadStringList = loadStringList;
     }
 
-
     public List<T> loadData() throws IOException {
-        List<String> stringList = loadStringList(  );
+        List<String> stringList = loadStringList.apply( fileName );
         List<T> result = parseAllLines( stringList );
         setSequence( result );
 
         return result;
     }
 
-    private List<String> loadStringList() throws IOException {
-        return FileHelper.readAllLines( fileName );
-    }
 
     private List<T> parseAllLines(List<String> stringList) {
         return stringList.stream()

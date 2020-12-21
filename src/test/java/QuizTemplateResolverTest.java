@@ -1,8 +1,8 @@
 import org.corda.QuizTemplateResolver;
+import org.corda.helper.FileHelper;
 import org.corda.model.Day03Data;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 import java.util.function.Function;
@@ -15,10 +15,10 @@ public class QuizTemplateResolverTest {
         QuizTemplateResolver<Day03Data> resolver = makeDummyTemplateResolver();
 
         List<Day03Data> dataList = resolver.loadData();
-        
-        assertEquals(  6, dataList.size());
-        assertEquals(  "200", dataList.get( 5 ).getInput());
-        assertEquals(  5, dataList.get( 5 ).getSequence());
+
+        assertEquals( 6, dataList.size() );
+        assertEquals( "200", dataList.get( 5 ).getInput() );
+        assertEquals( 5, dataList.get( 5 ).getSequence() );
 
     }
 
@@ -28,7 +28,7 @@ public class QuizTemplateResolverTest {
         QuizTemplateResolver<Day03Data> templateResolver = new QuizTemplateResolver<Day03Data>(
             "testNumberList.txt",
             isOk,
-            parse );
+            parse, s -> FileHelper.readAllLines( s ) );
 
         return templateResolver;
     }

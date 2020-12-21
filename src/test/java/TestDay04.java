@@ -34,9 +34,7 @@ class TestDay04 {
 
     }
 
-    public static final String INPUT_EXAMPLE_1 = "hcl:ff4451 iyr:2022 " +
-        "byr:1972 ecl:#86cbc5 pid:29044223 eyr:1985 " +
-        "hgt:62cm";
+
 
     @Test
     void parseInput_smoketest() {
@@ -48,8 +46,9 @@ class TestDay04 {
         assertNotNull( data );
     }
 
-    public static final String INPUT_EXAMPLE_2 = "hcl:#623a2f iyr:2013 eyr:2023 hgt:164cm byr:1956 " +
-        "ecl:oth";
+    public static final String INPUT_EXAMPLE_1 = "hcl:ff4451 iyr:2022 " +
+        "byr:1972 ecl:#86cbc5 pid:29044223 eyr:1985 " +
+        "hgt:62cm";
 
     @Test
     void parseInput_happypath1() {
@@ -68,6 +67,9 @@ class TestDay04 {
         assertEquals( null, data.getCid() );
 
     }
+
+    public static final String INPUT_EXAMPLE_2 = "hcl:#623a2f iyr:2013 eyr:2023 hgt:164cm byr:1956 " +
+        "ecl:oth";
 
     @Test
     void parseInput_happypath2() {
