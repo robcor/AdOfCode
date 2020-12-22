@@ -43,14 +43,6 @@ public class QuizD0402Resolver extends QuizD04 {
         return isInRange( value, 1920, 2002 );
     }
 
-    public boolean isValidEcl(String ecl) {
-
-        if (isNull( ecl )) return false;
-        return false;
-    }
-
-
-
 
     //hgt (Height) - a number followed by either cm or in:
     //If cm, the number must be at least 150 and at most 193.
@@ -78,10 +70,6 @@ public class QuizD0402Resolver extends QuizD04 {
     }
 
 
-
-
-
-
     //iyr (Issue Year) - four digits; at least 2010 and at most 2020.
     public boolean isValidIyr(String iyr) {
 
@@ -105,7 +93,7 @@ public class QuizD0402Resolver extends QuizD04 {
 
         if (isNull( hcl )) return false;
 
-        if('#' != hcl.charAt( 0 )) return false;
+        if ('#' != hcl.charAt( 0 )) return false;
         String color = splitAt( hcl, 1 )[1];
 
         if (color.length() != 6) return false;
@@ -115,11 +103,36 @@ public class QuizD0402Resolver extends QuizD04 {
         return true;
     }
 
+    //ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
+    public boolean isValidEcl(String ecl) {
+
+        if (isNull( ecl )) return false;
+
+        return (
+            "amb".equals( ecl ) ||
+            "blu".equals( ecl ) ||
+            "brn".equals( ecl ) ||
+            "gry".equals( ecl ) ||
+            "grn".equals( ecl ) ||
+            "hzl".equals( ecl ) ||
+            "oth".equals( ecl ));
+
+    }
+
+    //pid (Passport ID) - a nine-digit number, including leading zeroes.
     public boolean isValidPid(String pid) {
 
         if (isNull( pid )) return false;
-        return false;
+
+        if (pid.length() != 9) return false;
+
+        if (howManyDigitPrefix(pid) != 9 ) return false;
+
+        return true;
     }
+
+    //cid (Country ID) - ignored, missing or not.
+    //MEANS NO VALIDATION
 
     // private
 

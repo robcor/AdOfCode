@@ -35,7 +35,7 @@ class TestDay04 {
 
     }
 
-    @Disabled("skeleton: not yet implemented")
+    //@Disabled("skeleton: not yet implemented")
     @Test
     void secondQuiz() throws Exception {
 
@@ -43,9 +43,9 @@ class TestDay04 {
 
         long result = resolver.resolve();
 
-        assertEquals( 42, result );
+        assertEquals( 167, result );
 
-        System.out.println( "D4Q1 result: " + result );
+        System.out.println( "D4Q2 result: " + result );
     }
 
     @Test
@@ -133,11 +133,47 @@ class TestDay04 {
 
     }
 
-
-
     //ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
+    @Test
+    void isValidEcl() throws Exception {
+
+        QuizD0402Resolver resolver = new QuizD0402Resolver( "testValidPassport.txt" );
+
+        assertFalse( resolver.isValidEcl( "blue" ) );
+        assertFalse( resolver.isValidEcl( "#a2a0a1" ) );
+        assertFalse( resolver.isValidEcl( "321" ) );
+        assertFalse( resolver.isValidEcl( "" ) );
+
+        assertTrue( resolver.isValidEcl( "amb" ) );
+        assertTrue( resolver.isValidEcl( "blu" ) );
+        assertTrue( resolver.isValidEcl( "brn" ) );
+        assertTrue( resolver.isValidEcl( "gry" ) );
+        assertTrue( resolver.isValidEcl( "grn" ) );
+        assertTrue( resolver.isValidEcl( "hzl" ) );
+        assertTrue( resolver.isValidEcl( "oth" ) );
+
+    }
+
     //pid (Passport ID) - a nine-digit number, including leading zeroes.
-    //cid (Country ID) - ignored, missing or not.
+    @Test
+    void isValidPid() throws Exception {
+
+        QuizD0402Resolver resolver = new QuizD0402Resolver( "testValidPassport.txt" );
+
+        assertFalse( resolver.isValidPid( "1234567890" ) );
+        assertFalse( resolver.isValidPid( "0234567891" ) );
+        assertFalse( resolver.isValidPid( "00345678911" ) );
+        assertFalse( resolver.isValidPid( "1234a6789" ) );
+        assertFalse( resolver.isValidPid( "0234a6789" ) );
+
+
+        assertTrue( resolver.isValidPid( "123456789" ) );
+        assertTrue( resolver.isValidPid( "023456789" ) );
+        assertTrue( resolver.isValidPid( "003456789" ) );
+        assertTrue( resolver.isValidPid( "000456789" ) );
+
+    }
+
 
     @Test
     void parseInput_smoketest() {
