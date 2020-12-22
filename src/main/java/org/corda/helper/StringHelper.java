@@ -16,5 +16,10 @@ public class StringHelper {
         return String.valueOf( value.charAt( position ) );
     }
 
-
+    public static boolean isNull(Object value) {
+        if (value == null) {
+            return true;
+        }
+        return false;
+    }
 }

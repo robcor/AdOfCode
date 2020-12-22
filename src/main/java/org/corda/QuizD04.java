@@ -1,10 +1,13 @@
 package org.corda;
 
+import org.apache.commons.lang3.StringUtils;
 import org.corda.helper.FileHelper;
 import org.corda.model.ConfigD03;
 import org.corda.model.Day03Data;
 import org.corda.model.Day04Data;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.function.Function;
 
@@ -14,4 +17,23 @@ public abstract class QuizD04 extends Quiz<Day04Data, Object>{
     }
 
 
+    @Override
+    public Day04Data parseInput(String input) {
+
+        if (StringUtils.trimToNull(input) == null) {
+            return null;
+        }
+
+        String[] splitByBlank = input.split( " " );
+
+        HashMap<String, String> valueMap = new HashMap<>();
+        Arrays.stream( splitByBlank )
+            .forEach( s -> {
+                String[] valuePair = s.split( ":" );
+                valueMap.put( valuePair[0], valuePair[1] );
+            } );
+
+        return new Day04Data( valueMap );
+
+    }
 }

@@ -1,4 +1,5 @@
 import org.corda.QuizD0401Resolver;
+import org.corda.QuizD0402Resolver;
 import org.corda.model.Day04Data;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -33,6 +34,110 @@ class TestDay04 {
         assertEquals( 2, result );
 
     }
+
+    @Disabled("skeleton: not yet implemented")
+    @Test
+    void secondQuiz() throws Exception {
+
+        QuizD0402Resolver resolver = new QuizD0402Resolver( "day04input.txt" );
+
+        long result = resolver.resolve();
+
+        assertEquals( 42, result );
+
+        System.out.println( "D4Q1 result: " + result );
+    }
+
+    @Test
+    void secondQuizExample() throws Exception {
+
+        QuizD0402Resolver resolver = new QuizD0402Resolver( "testValidPassport.txt" );
+
+        long result = resolver.resolve();
+
+        assertEquals( 4, result );
+
+    }
+
+
+    // byr (Birth Year) - four digits; at least 1920 and at most 2002.
+    @Test
+    void isValidByr() throws Exception {
+
+        QuizD0402Resolver resolver = new QuizD0402Resolver( "testValidPassport.txt" );
+
+        assertFalse( resolver.isValidByr( "1919" ) );
+        assertTrue( resolver.isValidByr( "1920" ) );
+        assertTrue( resolver.isValidByr( "2002" ) );
+        assertFalse( resolver.isValidByr( "2003" ) );
+
+    }
+    
+    @Test
+    void isValidIyr() throws Exception {
+
+        QuizD0402Resolver resolver = new QuizD0402Resolver( "testValidPassport.txt" );
+
+        assertFalse( resolver.isValidIyr( "2009" ) );
+        assertTrue( resolver.isValidIyr( "2010" ) );
+        assertTrue( resolver.isValidIyr( "2020" ) );
+        assertFalse( resolver.isValidIyr( "2021" ) );
+
+    }
+
+    @Test
+    void isValidEyr() throws Exception {
+
+        QuizD0402Resolver resolver = new QuizD0402Resolver( "testValidPassport.txt" );
+
+        assertFalse( resolver.isValidEyr( "2019" ) );
+        assertTrue( resolver.isValidEyr( "2020" ) );
+        assertTrue( resolver.isValidEyr( "2030" ) );
+        assertFalse( resolver.isValidEyr( "2031" ) );
+    }
+
+
+    @Test
+    void isValidHgt() throws Exception {
+
+        QuizD0402Resolver resolver = new QuizD0402Resolver( "testValidPassport.txt" );
+
+        assertFalse( resolver.isValidHgt( "150pm" ) );
+        assertFalse( resolver.isValidHgt( "59kz" ) );
+        
+        assertFalse( resolver.isValidHgt( "149cm" ) );
+        assertTrue( resolver.isValidHgt( "150cm" ) );
+        assertTrue( resolver.isValidHgt( "193cm" ) );
+        assertFalse( resolver.isValidHgt( "194cm" ) );
+
+        assertFalse( resolver.isValidHgt( "58in" ) );
+        assertTrue( resolver.isValidHgt( "59in" ) );
+        assertTrue( resolver.isValidHgt( "76in" ) );
+        assertFalse( resolver.isValidHgt( "77in" ) );
+    }
+
+
+    //hcl (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
+    @Test
+    void isValidHcl() throws Exception {
+
+        QuizD0402Resolver resolver = new QuizD0402Resolver( "testValidPassport.txt" );
+
+        assertFalse( resolver.isValidHcl( ".a2a0a1" ) );
+        assertFalse( resolver.isValidHcl( "#a2a0a1k" ) );
+        assertFalse( resolver.isValidHcl( "#a2a@a1" ) );
+
+        assertTrue( resolver.isValidHcl( "#a2a0a1" ) );
+        assertTrue( resolver.isValidHcl( "#abcdef" ) );
+        assertTrue( resolver.isValidHcl( "#123456" ) );
+
+    }
+
+
+
+    //ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
+    //pid (Passport ID) - a nine-digit number, including leading zeroes.
+    //cid (Country ID) - ignored, missing or not.
 
     @Test
     void parseInput_smoketest() {
@@ -98,7 +203,7 @@ class TestDay04 {
 
         Day04Data data = resolver.parseInput( inputExample );
 
-        boolean isValid = resolver.checkValue(  data) ;
+        boolean isValid = resolver.checkValue( data );
 
         assertTrue( isValid );
 
@@ -106,13 +211,14 @@ class TestDay04 {
 
     public static final String INVALID_7 = "iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884 " +
         "hcl:#cfa07d byr:1929 ";
+
     @Test
     void checkValue_invalid8() {
         QuizD0401Resolver resolver = new QuizD0401Resolver( "FAKE" );
 
         Day04Data data = resolver.parseInput( INVALID_7 );
 
-        boolean isValid = resolver.checkValue(  data) ;
+        boolean isValid = resolver.checkValue( data );
         assertFalse( isValid );
     }
 
@@ -120,13 +226,24 @@ class TestDay04 {
         "eyr:2024 " +
         "ecl:brn pid:760753108 byr:1931 " +
         "hgt:179cm ";
+
     @Test
     void checkValue_validNoCid() {
         QuizD0401Resolver resolver = new QuizD0401Resolver( "FAKE" );
 
         Day04Data data = resolver.parseInput( VALID_NOCID );
 
-        boolean isValid = resolver.checkValue(  data) ;
+        boolean isValid = resolver.checkValue( data );
+        assertTrue( isValid );
+    }
+
+    @Test
+    void checkValue_validNoCid_2() {
+        QuizD0402Resolver resolver = new QuizD0402Resolver( "FAKE" );
+
+        Day04Data data = resolver.parseInput( VALID_NOCID );
+
+        boolean isValid = resolver.checkValue( data );
         assertTrue( isValid );
     }
 

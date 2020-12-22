@@ -24,7 +24,7 @@ public class NumberHelper {
         return intArray;
     }
 
-    public static boolean isInRange(int count, int minOccur, int maxOccur) {
-        return count >= minOccur && count <= maxOccur;
+    public static boolean isInRange(int value, int minValue, int maxValue) {
+        return value >= minValue && value <= maxValue;
     }
 }

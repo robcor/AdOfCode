@@ -47,7 +47,7 @@ public class TestDay01 {
                     int valueC = intArray[indexC];
                     if (valueA + valueB + valueC == 2020) {
                         result = valueA * valueB * valueC;
-                        System.out.println( "D1Q1 result: " + valueA * valueB * valueC );
+                        System.out.println( "D1Q2 result: " + valueA * valueB * valueC );
                         break;
                     }
                 }
