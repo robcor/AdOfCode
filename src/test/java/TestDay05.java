@@ -1,7 +1,5 @@
-import org.corda.model.Day04Data;
-import org.corda.year2020.QuizD0401Resolver;
 import org.corda.year2020.QuizD0402Resolver;
-import org.corda.year2020.QuizD0501Resolver;
+import org.corda.year2020.QuizD05Resolver;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -9,12 +7,14 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
+
 class TestDay05 {
 
     @Test
     void firstQuiz() throws Exception {
 
-        QuizD0501Resolver resolver = new QuizD0501Resolver( "day05input.txt" );
+        QuizD05Resolver resolver = new QuizD05Resolver( "day05input.txt" );
 
         long result = resolver.maxValue();
 
@@ -26,7 +26,7 @@ class TestDay05 {
     @Test
     void firstQuizExample() throws Exception {
 
-        QuizD0501Resolver resolver = new QuizD0501Resolver( "day05inputexample.txt" );
+        QuizD05Resolver resolver = new QuizD05Resolver( "day05inputexample.txt" );
 
         long result = resolver.maxValue();
 
@@ -35,15 +35,15 @@ class TestDay05 {
 
 
 
-    @Disabled("skeleton: not yet implemented")
+    //@Disabled("skeleton: not yet implemented")
     @Test
     void secondQuiz() throws Exception {
 
-        QuizD0402Resolver resolver = new QuizD0402Resolver( "day04input.txt" );
+        QuizD05Resolver resolver = new QuizD05Resolver( "day05input.txt" );
 
-        long result = resolver.counter();
+        int result = resolver.resolve();
 
-        assertEquals( 42, result );
+        assertEquals( 610, result );
 
         System.out.println( "D5Q2 result: " + result );
     }
