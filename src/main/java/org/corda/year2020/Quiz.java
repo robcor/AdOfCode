@@ -19,13 +19,6 @@ public abstract class Quiz<T extends Numerable, C> implements QuizResolver {
         this.config = config;
     }
 
-    // load line by line
-    /*
-    private List<String> loadStringList(String fileName) {
-        return FileHelper.readAllLines( fileName );
-    }
-    */
-
     public abstract boolean checkValue(T data);
 
     public abstract T parseInput(String input);
