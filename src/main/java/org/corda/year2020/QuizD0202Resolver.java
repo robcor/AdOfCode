@@ -5,7 +5,7 @@ import org.corda.helper.StringHelper;
 import org.corda.model.Day02Data;
 
 public class QuizD0202Resolver extends QuizD02 {
-    private QuizTemplateResolver quizTemplate;
+    private QuizCounterTemplateResolver quizTemplate;
 
 
     public QuizD0202Resolver(String fileName) {

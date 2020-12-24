@@ -13,7 +13,7 @@ class TestDay02 {
 
         QuizD0201Resolver resolver = new QuizD0201Resolver( "day02input.txt" );
 
-        long result = resolver.resolve();
+        long result = resolver.counter();
 
         assertEquals( 614, result );
 
@@ -25,7 +25,7 @@ class TestDay02 {
 
         QuizD0202Resolver resolver = new QuizD0202Resolver( "day02input.txt" );
 
-        long result = resolver.resolve();
+        long result = resolver.counter();
 
         assertEquals( 354, result );
 

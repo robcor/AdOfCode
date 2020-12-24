@@ -16,7 +16,7 @@ class TestDay03 {
 
         QuizD0301Resolver resolver = new QuizD0301Resolver( "day03input.txt" , null);
 
-        long result = resolver.resolve();
+        long result = resolver.counter();
 
         assertEquals( 244, result );
 
@@ -46,7 +46,7 @@ class TestDay03 {
 
     private long resultByConfig(ConfigD03 config1, String fileName) throws java.io.IOException {
         QuizD0302Resolver resolver = new QuizD0302Resolver( fileName, config1);
-        long result = resolver.resolve();
+        long result = resolver.counter();
 
         return result;
     }

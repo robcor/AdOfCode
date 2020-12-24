@@ -4,12 +4,13 @@ package org.corda.year2020;
 import org.corda.model.Numerable;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class QuizTemplateResolver<T extends Numerable> implements QuizResolver {
+public class QuizCounterTemplateResolver<T extends Numerable> implements QuizResolver {
 
 
     private final String fileName;
@@ -19,10 +20,10 @@ public class QuizTemplateResolver<T extends Numerable> implements QuizResolver {
 
 
 
-    public QuizTemplateResolver(String fileName,
-                                Predicate<T> isOk,
-                                Function<String, T> parse,
-                                Function<String, List<String>> loadStringList) {
+    public QuizCounterTemplateResolver(String fileName,
+                                       Predicate<T> isOk,
+                                       Function<String, T> parse,
+                                       Function<String, List<String>> loadStringList) {
         this.fileName = fileName;
         this.isOk = isOk;
         this.parse = parse;
@@ -52,17 +53,15 @@ public class QuizTemplateResolver<T extends Numerable> implements QuizResolver {
                 data.setSequence( idx++ );
             }
         }
-
     }
 
     @Override
-    public long resolve() throws IOException {
+    public long counter() throws IOException {
         List<T> aTList = loadData( );
 
         return aTList.stream()
             .filter( data -> isOk.test( data ) )
             .count();
     }
-
 
 }
