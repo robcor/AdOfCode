@@ -1,4 +1,4 @@
-package org.corda;
+package org.corda.helper;
 
 
 import org.corda.helper.FileHelper;

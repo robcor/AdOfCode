@@ -1,4 +1,4 @@
-package org.corda;
+package org.corda.year2020;
 
 import org.corda.model.Day04Data;
 

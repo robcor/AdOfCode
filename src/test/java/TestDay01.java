@@ -1,4 +1,4 @@
-import org.corda.Facade;
+import org.corda.helper.Facade;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

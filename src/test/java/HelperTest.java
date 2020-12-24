@@ -14,6 +14,9 @@ import java.util.List;
 class HelperTest {
 
 
+    public static final boolean IS_FRONT = true;
+    private static final boolean IS_BACK = false;
+
     @Test
     void getInputStream() throws Exception {
         InputStream result = FileHelper.getInputStream( "testNumberList.txt" );
@@ -34,7 +37,6 @@ class HelperTest {
 
         assertEquals( 3, result.size() );
     }
-
 
 
     @Test
@@ -72,7 +74,40 @@ class HelperTest {
 
         String[] result = StringHelper.splitAt( toTest, 7 );
         assertEquals( "BFFFBBF", result[0] );
-        assertEquals( "RRR", result[1]  );
+        assertEquals( "RRR", result[1] );
+    }
+
+    // FBFBBFFRLR
+    @Test
+    void calculateMiddlePosition() {
+        assertEquals( 63, MathHelper.calculateMiddlePosition( 0, 127, IS_FRONT ) );
+        assertEquals( 32, MathHelper.calculateMiddlePosition( 0, 63, IS_BACK ) );
+        assertEquals( 47, MathHelper.calculateMiddlePosition( 32, 63, IS_FRONT ) );
+        assertEquals( 40, MathHelper.calculateMiddlePosition( 32, 47, IS_BACK ) );
+        assertEquals( 44, MathHelper.calculateMiddlePosition( 40, 47, IS_BACK ) );
+        assertEquals( 45, MathHelper.calculateMiddlePosition( 44, 47, IS_FRONT ) );
+        assertEquals( 44, MathHelper.calculateMiddlePosition( 44, 45, IS_FRONT ) );
+    }
+
+    @Test
+    void calculateMiddlePositionLow() {
+        assertEquals( 63, MathHelper.calculateMiddlePositionLow( 0, 127 ) );
+        assertEquals( 31, MathHelper.calculateMiddlePositionLow( 0, 63 ) );
+        assertEquals( 47, MathHelper.calculateMiddlePositionLow( 32, 63 ) );
+        assertEquals( 39, MathHelper.calculateMiddlePositionLow( 32, 47 ) );
+        assertEquals( 43, MathHelper.calculateMiddlePositionLow( 40, 47 ) );
+        assertEquals( 45, MathHelper.calculateMiddlePositionLow( 44, 47 ) );
+        assertEquals( 44, MathHelper.calculateMiddlePositionLow( 44, 45 ) );
+    }
+
+    @Test
+    void toPosition() throws Exception {
+        String toTest = "FBFBBFF";
+
+        int position = MathHelper.toPosition( toTest, 'F', 'B', 127 );
+
+        assertNotNull( position );
+        assertEquals( 44, position );
     }
 
     // BFFFBBFRRR: row 70, column 7, seat ID 567.
@@ -80,30 +115,30 @@ class HelperTest {
     void flightCodeToPosition_row() throws Exception {
         String toTest = "BFFFBBFRRR";
 
-        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+        FlightPosition position = MathHelper.flightCodeToPosition( toTest );
 
         assertNotNull( position );
-        assertEquals( 70, position.getRow());
+        assertEquals( 70, position.getRow() );
     }
 
     @Test
     void flightCodeToPosition_column() throws Exception {
         String toTest = "BFFFBBFRRR";
 
-        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+        FlightPosition position = MathHelper.flightCodeToPosition( toTest );
 
         assertNotNull( position );
-        assertEquals( 7, position.getColumn());
+        assertEquals( 7, position.getColumn() );
     }
 
     @Test
     void flightCodeToPosition() throws Exception {
         String toTest = "BFFFBBFRRR";
 
-        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+        FlightPosition position = MathHelper.flightCodeToPosition( toTest );
 
         assertNotNull( position );
-        assertEquals( 567, position.getId());
+        assertEquals( 567, position.getId() );
     }
 
     // FFFBBBFRRR: row 14, column 7, seat ID 119.
@@ -111,30 +146,30 @@ class HelperTest {
     void flightCodeToPosition2_row() throws Exception {
         String toTest = "FFFBBBFRRR";
 
-        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+        FlightPosition position = MathHelper.flightCodeToPosition( toTest );
 
         assertNotNull( position );
-        assertEquals( 14, position.getRow());
+        assertEquals( 14, position.getRow() );
     }
 
     @Test
     void flightCodeToPosition2_column() throws Exception {
         String toTest = "FFFBBBFRRR";
 
-        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+        FlightPosition position = MathHelper.flightCodeToPosition( toTest );
 
         assertNotNull( position );
-        assertEquals( 7, position.getColumn());
+        assertEquals( 7, position.getColumn() );
     }
 
     @Test
     void flightCodeToPosition2_id() throws Exception {
         String toTest = "FFFBBBFRRR";
 
-        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+        FlightPosition position = MathHelper.flightCodeToPosition( toTest );
 
         assertNotNull( position );
-        assertEquals( 119, position.getId());
+        assertEquals( 119, position.getId() );
     }
 
     // BBFFBBFRLL: row 102, column 4, seat ID 820.
@@ -142,30 +177,30 @@ class HelperTest {
     void flightCodeToPosition3_row() throws Exception {
         String toTest = "FFFBBBFRRR";
 
-        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+        FlightPosition position = MathHelper.flightCodeToPosition( toTest );
 
         assertNotNull( position );
-        assertEquals( 102, position.getRow());
+        assertEquals( 102, position.getRow() );
     }
 
     @Test
     void flightCodeToPosition3_column() throws Exception {
         String toTest = "FFFBBBFRRR";
 
-        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+        FlightPosition position = MathHelper.flightCodeToPosition( toTest );
 
         assertNotNull( position );
-        assertEquals( 4, position.getColumn());
+        assertEquals( 4, position.getColumn() );
     }
 
     @Test
     void flightCodeToPosition3_id() throws Exception {
         String toTest = "FFFBBBFRRR";
 
-        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+        FlightPosition position = MathHelper.flightCodeToPosition( toTest );
 
         assertNotNull( position );
-        assertEquals( 820, position.getId());
+        assertEquals( 820, position.getId() );
     }
 
 

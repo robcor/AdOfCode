@@ -1,7 +1,6 @@
-package org.corda;
+package org.corda.year2020;
 
 
-import org.corda.helper.FileHelper;
 import org.corda.model.Numerable;
 
 import java.io.IOException;

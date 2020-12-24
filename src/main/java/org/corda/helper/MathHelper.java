@@ -12,8 +12,45 @@ public class MathHelper {
         //BFFFBBFRRR: row 70, column 7, seat ID 567.
         String rowStr = inputCode.substring( 0, 7 );
         String columnStr = inputCode.substring( 7 );
+        int rowPosition = toPosition( rowStr, 'F', 'B', 127 );
 
 
-        return new FlightPosition(70, 7, 567);
+        return new FlightPosition( rowPosition, 7, 567 );
     }
+
+    public static int toPosition(final String code, final char lowCode, final char highCode, final int maxValue) {
+        int lowPosition = 0;
+        int highPosition = maxValue;
+        for (int i = 0; i < code.length(); i++) {
+            char charAt = code.charAt( i );
+            boolean isLow = isLow( charAt, lowCode );
+            int middlePosition = calculateMiddlePosition( lowPosition, highPosition, isLow );
+
+            if (isLow) {
+                highPosition = middlePosition;
+            } else {
+                lowPosition = middlePosition;
+            }
+        }
+
+        // WARN highPosition and  lowPosition should be equals
+        return lowPosition;
+    }
+
+    public static int calculateMiddlePosition(int lowPosition, int highPosition, boolean isLow) {
+
+        int lowValue = calculateMiddlePositionLow( lowPosition, highPosition );
+        if (!isLow) return lowValue + 1;
+
+        return lowValue;
+    }
+
+    public static int calculateMiddlePositionLow(int lowPosition, int highPosition) {
+        return Math.floorDiv( lowPosition + highPosition, 2 );
+    }
+
+    public static boolean isLow(final char charAt, final char lowChar) {
+        return charAt == lowChar;
+    }
+
 }

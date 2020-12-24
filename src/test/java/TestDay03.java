@@ -1,5 +1,5 @@
-import org.corda.QuizD0301Resolver;
-import org.corda.QuizD0302Resolver;
+import org.corda.year2020.QuizD0301Resolver;
+import org.corda.year2020.QuizD0302Resolver;
 import org.corda.model.ConfigD03;
 import org.corda.model.Day03Data;
 import org.junit.jupiter.api.Test;
