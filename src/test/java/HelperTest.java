@@ -175,7 +175,7 @@ class HelperTest {
     // BBFFBBFRLL: row 102, column 4, seat ID 820.
     @Test
     void flightCodeToPosition3_row() throws Exception {
-        String toTest = "FFFBBBFRRR";
+        String toTest = "BBFFBBFRLL";
 
         FlightPosition position = MathHelper.flightCodeToPosition( toTest );
 
@@ -185,7 +185,7 @@ class HelperTest {
 
     @Test
     void flightCodeToPosition3_column() throws Exception {
-        String toTest = "FFFBBBFRRR";
+        String toTest = "BBFFBBFRLL";
 
         FlightPosition position = MathHelper.flightCodeToPosition( toTest );
 
@@ -195,7 +195,7 @@ class HelperTest {
 
     @Test
     void flightCodeToPosition3_id() throws Exception {
-        String toTest = "FFFBBBFRRR";
+        String toTest = "BBFFBBFRLL";
 
         FlightPosition position = MathHelper.flightCodeToPosition( toTest );
 

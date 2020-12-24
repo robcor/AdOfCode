@@ -13,9 +13,12 @@ public class MathHelper {
         String rowStr = inputCode.substring( 0, 7 );
         String columnStr = inputCode.substring( 7 );
         int rowPosition = toPosition( rowStr, 'F', 'B', 127 );
+        int colPosition = toPosition( columnStr, 'L', 'R', 7 );
+
+        int id = rowPosition*8 + colPosition;
 
 
-        return new FlightPosition( rowPosition, 7, 567 );
+        return new FlightPosition( rowPosition, colPosition, id );
     }
 
     public static int toPosition(final String code, final char lowCode, final char highCode, final int maxValue) {
