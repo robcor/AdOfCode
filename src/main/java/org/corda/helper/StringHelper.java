@@ -22,4 +22,33 @@ public class StringHelper {
         }
         return false;
     }
+
+    public static String[] splitAt(String s, int where) {
+
+        String first = s.substring( 0, where );
+        String second = s.substring( where );
+
+        String[] result = new String[2];
+        result[0] = first;
+        result[1] = second;
+
+        return result;
+    }
+
+    public static int howManyDigitPrefix(String str) {
+
+        if (!Character.isDigit( str.charAt( 0 ) )) {
+            return 0;
+        }
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isDigit( str.charAt( i ) )) {
+                count++;
+            } else {
+                break;
+            }
+        }
+        return count;
+
+    }
 }

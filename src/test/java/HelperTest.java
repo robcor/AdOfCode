@@ -1,6 +1,8 @@
 import org.corda.helper.FileHelper;
+import org.corda.helper.MathHelper;
 import org.corda.helper.NumberHelper;
 import org.corda.helper.StringHelper;
+import org.corda.model.FlightPosition;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -62,6 +64,108 @@ class HelperTest {
 
         assertEquals( "a", StringHelper.getLetterAt( toTest, 1 ) );
         assertEquals( "c", StringHelper.getLetterAt( toTest, 3 ) );
+    }
+
+    @Test
+    void splitAt() throws Exception {
+        String toTest = "BFFFBBFRRR";
+
+        String[] result = StringHelper.splitAt( toTest, 7 );
+        assertEquals( "BFFFBBF", result[0] );
+        assertEquals( "RRR", result[1]  );
+    }
+
+    // BFFFBBFRRR: row 70, column 7, seat ID 567.
+    @Test
+    void flightCodeToPosition_row() throws Exception {
+        String toTest = "BFFFBBFRRR";
+
+        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+
+        assertNotNull( position );
+        assertEquals( 70, position.getRow());
+    }
+
+    @Test
+    void flightCodeToPosition_column() throws Exception {
+        String toTest = "BFFFBBFRRR";
+
+        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+
+        assertNotNull( position );
+        assertEquals( 7, position.getColumn());
+    }
+
+    @Test
+    void flightCodeToPosition() throws Exception {
+        String toTest = "BFFFBBFRRR";
+
+        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+
+        assertNotNull( position );
+        assertEquals( 567, position.getId());
+    }
+
+    // FFFBBBFRRR: row 14, column 7, seat ID 119.
+    @Test
+    void flightCodeToPosition2_row() throws Exception {
+        String toTest = "FFFBBBFRRR";
+
+        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+
+        assertNotNull( position );
+        assertEquals( 14, position.getRow());
+    }
+
+    @Test
+    void flightCodeToPosition2_column() throws Exception {
+        String toTest = "FFFBBBFRRR";
+
+        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+
+        assertNotNull( position );
+        assertEquals( 7, position.getColumn());
+    }
+
+    @Test
+    void flightCodeToPosition2_id() throws Exception {
+        String toTest = "FFFBBBFRRR";
+
+        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+
+        assertNotNull( position );
+        assertEquals( 119, position.getId());
+    }
+
+    // BBFFBBFRLL: row 102, column 4, seat ID 820.
+    @Test
+    void flightCodeToPosition3_row() throws Exception {
+        String toTest = "FFFBBBFRRR";
+
+        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+
+        assertNotNull( position );
+        assertEquals( 102, position.getRow());
+    }
+
+    @Test
+    void flightCodeToPosition3_column() throws Exception {
+        String toTest = "FFFBBBFRRR";
+
+        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+
+        assertNotNull( position );
+        assertEquals( 4, position.getColumn());
+    }
+
+    @Test
+    void flightCodeToPosition3_id() throws Exception {
+        String toTest = "FFFBBBFRRR";
+
+        FlightPosition position = MathHelper.flightCodeToPosition(toTest);
+
+        assertNotNull( position );
+        assertEquals( 820, position.getId());
     }
 
 

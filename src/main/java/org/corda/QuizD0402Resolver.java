@@ -2,6 +2,7 @@ package org.corda;
 
 
 import org.apache.commons.lang3.StringUtils;
+import org.corda.helper.StringHelper;
 import org.corda.model.Day04Data;
 import static org.corda.helper.NumberHelper.isInRange;
 import static org.corda.helper.StringHelper.isNull;
@@ -51,11 +52,11 @@ public class QuizD0402Resolver extends QuizD04 {
 
         if (isNull( hgt )) return false;
 
-        int howManyDigit = howManyDigitPrefix( hgt );
+        int howManyDigit = StringHelper.howManyDigitPrefix( hgt );
 
         if (howManyDigit == 0) return false;
 
-        String[] splitted = splitAt( hgt, howManyDigit );
+        String[] splitted = StringHelper.splitAt( hgt, howManyDigit );
 
         int value = Integer.parseInt( splitted[0] );
         String lenType = splitted[1];
@@ -94,7 +95,7 @@ public class QuizD0402Resolver extends QuizD04 {
         if (isNull( hcl )) return false;
 
         if ('#' != hcl.charAt( 0 )) return false;
-        String color = splitAt( hcl, 1 )[1];
+        String color = StringHelper.splitAt( hcl, 1 )[1];
 
         if (color.length() != 6) return false;
 
@@ -126,7 +127,7 @@ public class QuizD0402Resolver extends QuizD04 {
 
         if (pid.length() != 9) return false;
 
-        if (howManyDigitPrefix(pid) != 9 ) return false;
+        if (StringHelper.howManyDigitPrefix(pid) != 9 ) return false;
 
         return true;
     }
@@ -144,36 +145,8 @@ public class QuizD0402Resolver extends QuizD04 {
         return INCH.equals( anObject );
     }
 
-    private String[] splitAt(String s, int where) {
-
-        String first = s.substring( 0, where );
-        String second = s.substring( where );
-
-        String[] result = new String[2];
-        result[0] = first;
-        result[1] = second;
 
 
-        return result;
-
-    }
-
-    private int howManyDigitPrefix(String str) {
-
-        if (!Character.isDigit( str.charAt( 0 ) )) {
-            return 0;
-        }
-        int count = 0;
-        for (int i = 0; i < str.length(); i++) {
-            if (Character.isDigit( str.charAt( i ) )) {
-                count++;
-            } else {
-                break;
-            }
-        }
-        return count;
-
-    }
 
 
 }
