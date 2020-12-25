@@ -1,26 +1,25 @@
 package org.corda.helper;
 
 
+import org.corda.exception.AdventParseException;
+import org.corda.model.BagRule;
 import org.corda.model.BagsToken;
+import static org.corda.model.BagsToken.BAG;
+import static org.corda.model.BagsToken.BAGS_COMMA_LITERAL;
+import static org.corda.model.BagsToken.BAGS_END_LITERAL;
+import static org.corda.model.BagsToken.BAGS_LITERAL;
+import static org.corda.model.BagsToken.BAG_COMMA_LITERAL;
+import static org.corda.model.BagsToken.BAG_END_LITERAL;
+import static org.corda.model.BagsToken.BAG_LITERAL;
+import static org.corda.model.BagsToken.CONTAIN_LITERAL;
+import static org.corda.model.BagsToken.NO_LITERAL;
+import static org.corda.model.BagsToken.NUMBER;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ParseBags {
-    // literals
-    public static final String BAGS_LITERAL = "bags";
-    private static final String BAGS_COMMA_LITERAL = "bags,";
-    public static final String BAG_LITERAL = "bags";
-    private static final String BAG_COMMA_LITERAL = "bag,";
-    private static final String BAG_END_LITERAL = "bag.";
-    private static final String BAGS_END_LITERAL = "bags.";
-    private static final String CONTAIN_LITERAL = "contain";
 
-
-    // types
-    private static final String NUMBER = "NUMBER";
-    private static final String BAG = "BAG";
 
 
     // fields
@@ -37,38 +36,51 @@ public class ParseBags {
     // EXAMPLE
     // bright beige bags contain 4 faded magenta bags, 1 dotted purple bag, 2 mirrored cyan bags, 1 drab white bag.
     // (bright_beige, (faded_magenta, 4), (dotted purple, 1), (mirrored_cyan, 2), (drab_white, 1))
-    public List<BagsToken> lexer() throws ParseException {
+    public List<BagsToken> lexer() {
 
-        getBag();
+        BagsToken firstToken = getBag();
+        firstToken.setAsMain();
 
-        checkBagExists();
-
+        checkLiteralBagExists();
         checkContainExists();
+        String nextToken = next();
 
-        getNumber();
+        if (isLiteralNo( nextToken )) {
+            return tokenList;
+        }
 
+        getNumber( nextToken );
         getBag();
+        if (isLiteralEndBag( checkLiteralBagExists() ))
+            return tokenList;
 
-        checkBagExists();
-
-        // TODO repeat
         do {
             getNumber();
-
             getBag();
-
-        } while (BAG_END_LITERAL.equals( checkBagExists() ));
+        } while (!isLiteralEndBag( checkLiteralBagExists() ));
 
         return tokenList;
     }
 
-    private void getBag() {
+    private boolean isLiteralNo(String nextToken) {
+        return NO_LITERAL.equals( nextToken );
+    }
+
+    public BagRule parse() {
+
+        List<BagsToken> tokens = lexer();
+
+        return new BagRule( tokens );
+    }
+
+    private BagsToken getBag()  {
         String first = next();
         String second = next();
         String bagName = joinToken( first, second );
         BagsToken token = new BagsToken( BAG, bagName );
 
         tokenList.add( token );
+        return token;
     }
 
     private void getNumber() {
@@ -78,28 +90,39 @@ public class ParseBags {
         tokenList.add( token );
     }
 
-    private void checkContainExists() throws ParseException {
+    private void getNumber(String number) {
+        BagsToken token = new BagsToken( NUMBER, number );
+        tokenList.add( token );
+    }
+
+    private void checkContainExists()  {
         if (!isContain( next() ))
-            throw new ParseException( "no bags", 1 );
+            throw new AdventParseException(  "no contain literal found" );
     }
 
 
-    private String checkBagExists() throws ParseException {
+    private String checkLiteralBagExists()  {
         String bag = next();
-        if (!isBags( bag ))
-            throw new ParseException( "no bags", 1 );
+        if (!isLiteralBag( bag ))
+            throw new AdventParseException(  "no bags literal found" );
 
         return bag;
     }
 
-    private boolean isBags(String literal) {
-        return
-            BAGS_LITERAL.equals( literal ) ||
+    private boolean isLiteralBag(String literal) {
+        return BAGS_LITERAL.equals( literal ) ||
             BAGS_COMMA_LITERAL.equals( literal ) ||
             BAGS_END_LITERAL.equals( literal ) ||
             BAG_END_LITERAL.equals( literal ) ||
             BAG_LITERAL.equals( literal ) ||
             BAG_COMMA_LITERAL.equals( literal );
+    }
+
+    private boolean isLiteralEndBag(String literal) {
+        return (
+            BAGS_END_LITERAL.equals( literal ) ||
+            BAG_END_LITERAL.equals( literal )
+        );
     }
 
     private boolean isContain(String bags) {
@@ -117,7 +140,7 @@ public class ParseBags {
             return rawToken[counter];
         }
 
-        return null;
+        throw new AdventParseException(  "no more bags tokens" );
     }
 
 }

@@ -7,12 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TestDay07 {
 
+    @Disabled("skeleton: not yet implemented")
     @Test
     void firstQuiz() throws Exception {
 
         QuizD07Resolver resolver = new QuizD07Resolver( "day07input.txt" );
 
-        long result = resolver.resolve();
+        long result = resolver.resolve("shiny_gold");
 
         assertEquals( 42, result );
 
@@ -22,9 +23,9 @@ class TestDay07 {
     @Test
     void firstQuizExample() throws Exception {
 
-        QuizD07Resolver resolver = new QuizD07Resolver( "day07inputexample.txt" );
+        QuizD07Resolver resolver = new QuizD07Resolver( "day07inputexamplereduced.txt" );
 
-        long result = resolver.resolve();
+        long result = resolver.resolve("shiny_gold");
 
         assertEquals( 42, result );
     }
@@ -37,19 +38,20 @@ class TestDay07 {
 
         QuizD07Resolver resolver = new QuizD07Resolver( "day07input.txt" );
 
-        long result = resolver.resolve();
+        long result = resolver.resolve("shiny_gold");
 
         assertEquals( 42, result );
 
         System.out.println( "D7Q2 result: " + result );
     }
 
+    @Disabled("skeleton: not yet implemented")
     @Test
     void secondQuizExample() throws Exception {
 
         QuizD07Resolver resolver = new QuizD07Resolver( "day07inputexample.txt" );
 
-        long result = resolver.resolve();
+        long result = resolver.resolve("shiny_gold");
 
         assertEquals( 42, result );
 
