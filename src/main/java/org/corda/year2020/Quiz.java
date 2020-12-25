@@ -8,14 +8,14 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public abstract class Quiz<T extends Numerable, C> implements QuizResolver {
-    protected QuizCounterTemplateResolver<T> quizTemplate;
+    protected QuizTemplateResolver<T> quizTemplate;
     protected C config;
 
     public Quiz(String fileName, C config, Function<String, List<String>> readFile) {
         Predicate<T> isOk = s -> checkValue( s );
         Function<String, T> parse = s -> parseInput( s );
         // Function<String, List<String>> readFile = s -> loadStringList( s );
-        quizTemplate = new QuizCounterTemplateResolver<T>( fileName, isOk, parse, readFile );
+        quizTemplate = new QuizTemplateResolver<T>( fileName, isOk, parse, readFile, null );
         this.config = config;
     }
 
@@ -24,7 +24,12 @@ public abstract class Quiz<T extends Numerable, C> implements QuizResolver {
     public abstract T parseInput(String input);
 
     @Override
-    public long counter() throws IOException {
-        return quizTemplate.counter();
+    public long count() throws IOException {
+        return quizTemplate.count();
+    }
+
+    @Override
+    public long sum() {
+        return 0;
     }
 }

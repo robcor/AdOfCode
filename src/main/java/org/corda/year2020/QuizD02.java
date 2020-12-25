@@ -26,4 +26,5 @@ public abstract class QuizD02 extends Quiz<Day02Data, Object> {
 
         return new Day02Data( firstInt, secondInt, letter, password );
     }
+
 }

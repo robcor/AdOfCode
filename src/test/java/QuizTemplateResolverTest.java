@@ -1,4 +1,4 @@
-import org.corda.year2020.QuizCounterTemplateResolver;
+import org.corda.year2020.QuizTemplateResolver;
 import org.corda.helper.FileHelper;
 import org.corda.model.Day03Data;
 import org.junit.jupiter.api.Test;
@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class QuizCounterTemplateResolverTest {
+public class QuizTemplateResolverTest {
 
     @Test
     void loadData() throws Exception {
-        QuizCounterTemplateResolver<Day03Data> resolver = makeDummyTemplateResolver();
+        QuizTemplateResolver<Day03Data> resolver = makeDummyTemplateResolver();
 
         List<Day03Data> dataList = resolver.loadData();
 
@@ -22,10 +22,10 @@ public class QuizCounterTemplateResolverTest {
 
     }
 
-    private QuizCounterTemplateResolver<Day03Data> makeDummyTemplateResolver() {
+    private QuizTemplateResolver<Day03Data> makeDummyTemplateResolver() {
         Predicate<Day03Data> isOk = s -> false;
         Function<String, Day03Data> parse = s -> new Day03Data( s );
-        QuizCounterTemplateResolver<Day03Data> templateResolver = new QuizCounterTemplateResolver<Day03Data>(
+        QuizTemplateResolver<Day03Data> templateResolver = new QuizTemplateResolver<Day03Data>(
             "testNumberList.txt",
             isOk,
             parse, s -> FileHelper.readAllLines( s ) );

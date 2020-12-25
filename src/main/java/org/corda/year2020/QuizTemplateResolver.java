@@ -10,24 +10,38 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class QuizCounterTemplateResolver<T extends Numerable> implements QuizResolver {
+public class QuizTemplateResolver<T extends Numerable> implements QuizResolver {
 
 
     private final String fileName;
     private final Function<String, List<String>> loadStringList;
     private final Predicate<T> isOk;
     private final Function<String, T> parse;
+    private final Function<T, Long> dataValue;
 
 
 
-    public QuizCounterTemplateResolver(String fileName,
-                                       Predicate<T> isOk,
-                                       Function<String, T> parse,
-                                       Function<String, List<String>> loadStringList) {
+    public QuizTemplateResolver(String fileName,
+                                Predicate<T> isOk,
+                                Function<String, T> parse,
+                                Function<String, List<String>> loadStringList,
+                                Function<T, Long> dataValue) {
         this.fileName = fileName;
         this.isOk = isOk;
         this.parse = parse;
         this.loadStringList = loadStringList;
+        this.dataValue = dataValue;
+    }
+
+    public QuizTemplateResolver(String fileName,
+                                Predicate<T> isOk,
+                                Function<String, T> parse,
+                                Function<String, List<String>> loadStringList) {
+        this.fileName = fileName;
+        this.isOk = isOk;
+        this.parse = parse;
+        this.loadStringList = loadStringList;
+        this.dataValue = null;
     }
 
     public List<T> loadData() throws IOException {
@@ -56,7 +70,17 @@ public class QuizCounterTemplateResolver<T extends Numerable> implements QuizRes
     }
 
     @Override
-    public long counter() throws IOException {
+    public long sum() throws IOException {
+        List<T> aTList = loadData( );
+
+        return aTList.stream()
+            .filter( data -> isOk.test( data ) )
+            .map( x -> dataValue.apply(x))
+            .reduce(0L, Long::sum);
+    }
+
+    @Override
+    public long count() throws IOException {
         List<T> aTList = loadData( );
 
         return aTList.stream()

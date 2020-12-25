@@ -16,7 +16,7 @@ class TestDay04 {
 
         QuizD0401Resolver resolver = new QuizD0401Resolver( "day04input.txt" );
 
-        long result = resolver.counter();
+        long result = resolver.count();
 
         assertEquals( 208, result );
 
@@ -28,7 +28,7 @@ class TestDay04 {
 
         QuizD0401Resolver resolver = new QuizD0401Resolver( "day04inputexample.txt" );
 
-        long result = resolver.counter();
+        long result = resolver.count();
 
         assertEquals( 2, result );
 
@@ -40,7 +40,7 @@ class TestDay04 {
 
         QuizD0402Resolver resolver = new QuizD0402Resolver( "day04input.txt" );
 
-        long result = resolver.counter();
+        long result = resolver.count();
 
         assertEquals( 167, result );
 
@@ -52,7 +52,7 @@ class TestDay04 {
 
         QuizD0402Resolver resolver = new QuizD0402Resolver( "testValidPassport.txt" );
 
-        long result = resolver.counter();
+        long result = resolver.count();
 
         assertEquals( 4, result );
 
