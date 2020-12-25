@@ -16,7 +16,6 @@ public class QuizD07Resolver {
     public QuizD07Resolver(String fileName) {
         this.filename = fileName;
 
-
         List<String> lines = FileHelper.readAllLines( fileName );
 
         this.rules = lines.stream()

@@ -1,13 +1,13 @@
 package org.corda.helper;
 
 
-import org.apache.commons.lang3.StringUtils;
 import org.corda.Main;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -31,8 +31,7 @@ public class FileHelper {
     public static List<String> readAllLines(String fileName) {
         try (InputStream resource = getInputStream( fileName )) {
             if (resource == null)
-                return new ArrayList<>();
-            //throw new IOException( "'" + fileName + "'" + ": file not found" );
+                throw new UncheckedIOException( "'" + fileName + "'" + ": file not found", new IOException( "wrapper" ) );
 
             List<String> stringList =
                 new BufferedReader(
@@ -63,8 +62,8 @@ public class FileHelper {
             }
         }
 
-        if  (!nextElement.isEmpty())  {
-            result.add( nextElement.trim()  );
+        if (!nextElement.isEmpty()) {
+            result.add( nextElement.trim() );
         }
 
         return result;

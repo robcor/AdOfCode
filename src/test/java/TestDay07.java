@@ -11,11 +11,11 @@ class TestDay07 {
     @Test
     void firstQuiz() throws Exception {
 
-        QuizD07Resolver resolver = new QuizD07Resolver( "day07input.txt" );
+        QuizD07Resolver resolver = new QuizD07Resolver( "pippo.txt" );
 
         long result = resolver.resolve("shiny_gold");
 
-        assertEquals( 42, result );
+        assertEquals( 213, result );
 
         System.out.println( "D7Q1 result: " + result );
     }
