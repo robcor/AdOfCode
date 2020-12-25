@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TestDay07 {
 
-    @Disabled("skeleton: not yet implemented")
+    //@Disabled("skeleton: not yet implemented")
     @Test
     void firstQuiz() throws Exception {
 
@@ -21,13 +21,22 @@ class TestDay07 {
     }
 
     @Test
-    void firstQuizExample() throws Exception {
+    void firstQuizExampleReduced() throws Exception {
 
         QuizD07Resolver resolver = new QuizD07Resolver( "day07inputexamplereduced.txt" );
 
         long result = resolver.resolve("shiny_gold");
 
-        assertEquals( 42, result );
+        assertEquals( 1, result );
+    }
+
+    @Test
+    void firstQuizExample() throws Exception {
+        QuizD07Resolver resolver = new QuizD07Resolver( "day07inputexample.txt" );
+
+        long result = resolver.resolve("shiny_gold");
+
+        assertEquals( 4, result );
     }
 
 
