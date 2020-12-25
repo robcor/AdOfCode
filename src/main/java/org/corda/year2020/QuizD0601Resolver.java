@@ -8,11 +8,11 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-public class QuizD06Resolver implements QuizResolver {
+public class QuizD0601Resolver implements QuizResolver {
     private final String filename;
     private QuizTemplateResolver<Day06Data> templateResolver;
 
-    public QuizD06Resolver(String fileName) {
+    public QuizD0601Resolver(String fileName) {
         this.filename = fileName;
         templateResolver =
             new QuizTemplateResolver<>(

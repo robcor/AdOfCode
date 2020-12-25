@@ -1,5 +1,5 @@
-import org.corda.year2020.QuizD06Resolver;
-import org.corda.year2020.QuizD05Resolver;
+import org.corda.year2020.QuizD0601Resolver;
+import org.corda.year2020.QuizD0602Resolver;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -9,7 +9,7 @@ class TestDay06 {
     @Test
     void firstQuiz() throws Exception {
 
-        QuizD06Resolver resolver = new QuizD06Resolver( "day06input.txt" );
+        QuizD0601Resolver resolver = new QuizD0601Resolver( "day06input.txt" );
 
         long result = resolver.sum();
 
@@ -21,7 +21,7 @@ class TestDay06 {
     @Test
     void firstQuizExample() throws Exception {
 
-        QuizD06Resolver resolver = new QuizD06Resolver( "day06inputexample.txt" );
+        QuizD0601Resolver resolver = new QuizD0601Resolver( "day06inputexample.txt" );
 
         long result = resolver.sum();
 
@@ -30,17 +30,28 @@ class TestDay06 {
 
 
 
-    @Disabled("skeleton: not yet implemented")
+    //@Disabled("skeleton: not yet implemented")
     @Test
     void secondQuiz() throws Exception {
 
-        QuizD06Resolver resolver = new QuizD06Resolver( "day06input.txt" );
+        QuizD0602Resolver resolver = new QuizD0602Resolver( "day06input.txt" );
 
-        //int result = resolver.resolve();
+        long result = resolver.sum();
 
-        //assertEquals( 42, result );
+        assertEquals( 3039, result );
 
-        //System.out.println( "D5Q2 result: " + result );
+        System.out.println( "D5Q2 result: " + result );
+    }
+
+    @Test
+    void secondQuizExample() throws Exception {
+
+        QuizD0602Resolver resolver = new QuizD0602Resolver( "day06inputexample.txt" );
+
+        long result = resolver.sum();
+
+        assertEquals( 6, result );
+
     }
 
 
