@@ -11,7 +11,7 @@ class TestDay07 {
     @Test
     void firstQuiz() throws Exception {
 
-        QuizD07Resolver resolver = new QuizD07Resolver( "pippo.txt" );
+        QuizD07Resolver resolver = new QuizD07Resolver( "day07.txt" );
 
         long result = resolver.resolve("shiny_gold");
 
