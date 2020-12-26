@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class QuizD07Resolver {
+public class QuizD0701Resolver {
     private final String filename;
     List<BagRule> rules;
 
-    public QuizD07Resolver(String fileName) {
+    public QuizD0701Resolver(String fileName) {
         this.filename = fileName;
 
         List<String> lines = FileHelper.readAllLines( fileName );
@@ -31,7 +31,7 @@ public class QuizD07Resolver {
 
 
         Set<String> alreadyChecked = new HashSet<>() ;
-        //alreadyChecked.add( mainBag );
+
         Set<String> containedBy = findContainedBy( mainBag );
 
         recursiveSearchContained( alreadyChecked, containedBy );

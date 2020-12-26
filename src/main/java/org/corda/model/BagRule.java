@@ -1,18 +1,20 @@
 package org.corda.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class BagRule {
     private final List<BagsToken> tokens;
+    private int counter = 1;
+    private List<BagNameValue> nameValueList;
 
     public BagRule(List<BagsToken> tokens) {
         this.tokens = tokens;
     }
 
     public boolean contains(String bagName) {
-        int a =42;
         Set<BagsToken> containsSet = tokens.stream().filter( x -> {
             if (!x.isMain() && x.isBag()) {
                 return bagName.equals( x.getValue() );
@@ -30,5 +32,33 @@ public class BagRule {
         }
 
         return tokens.get( 0 ).getValue();
+    }
+
+    public List<BagNameValue> containedBags() {
+
+        if (counter != 1) {
+           return nameValueList;
+        }
+
+        nameValueList = new ArrayList<>(  );
+        BagNameValue nameValue = null;
+        while ((nameValue = nextPair()) != null) {
+            nameValueList.add( nameValue ) ;
+        }
+
+        return nameValueList;
+    }
+
+    private BagNameValue nextPair() {
+
+        if (counter >= tokens.size())
+            return null;
+
+        BagsToken number = tokens.get( counter );
+        counter++;
+        BagsToken bag = tokens.get( counter );
+        counter++;
+
+        return new BagNameValue(bag.getValue(), number.getValue());
     }
 }

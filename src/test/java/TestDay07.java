@@ -1,6 +1,4 @@
-import org.corda.year2020.QuizD0601Resolver;
-import org.corda.year2020.QuizD0602Resolver;
-import org.corda.year2020.QuizD07Resolver;
+import org.corda.year2020.QuizD0701Resolver;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,7 +9,7 @@ class TestDay07 {
     @Test
     void firstQuiz() throws Exception {
 
-        QuizD07Resolver resolver = new QuizD07Resolver( "day07.txt" );
+        QuizD0701Resolver resolver = new QuizD0701Resolver( "day07.txt" );
 
         long result = resolver.resolve("shiny_gold");
 
@@ -23,7 +21,7 @@ class TestDay07 {
     @Test
     void firstQuizExampleReduced() throws Exception {
 
-        QuizD07Resolver resolver = new QuizD07Resolver( "day07inputexamplereduced.txt" );
+        QuizD0701Resolver resolver = new QuizD0701Resolver( "day07inputexamplereduced.txt" );
 
         long result = resolver.resolve("shiny_gold");
 
@@ -32,7 +30,7 @@ class TestDay07 {
 
     @Test
     void firstQuizExample() throws Exception {
-        QuizD07Resolver resolver = new QuizD07Resolver( "day07inputexample.txt" );
+        QuizD0701Resolver resolver = new QuizD0701Resolver( "day07inputexample.txt" );
 
         long result = resolver.resolve("shiny_gold");
 
@@ -45,7 +43,7 @@ class TestDay07 {
     @Test
     void secondQuiz() throws Exception {
 
-        QuizD07Resolver resolver = new QuizD07Resolver( "day07input.txt" );
+        QuizD0701Resolver resolver = new QuizD0701Resolver( "day07input.txt" );
 
         long result = resolver.resolve("shiny_gold");
 
@@ -58,7 +56,7 @@ class TestDay07 {
     @Test
     void secondQuizExample() throws Exception {
 
-        QuizD07Resolver resolver = new QuizD07Resolver( "day07inputexample.txt" );
+        QuizD0701Resolver resolver = new QuizD0701Resolver( "day07inputexample.txt" );
 
         long result = resolver.resolve("shiny_gold");
 

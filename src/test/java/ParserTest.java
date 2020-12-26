@@ -1,4 +1,5 @@
 import org.corda.helper.ParseBags;
+import org.corda.model.BagNameValue;
 import org.corda.model.BagRule;
 import org.corda.model.BagsToken;
 import org.junit.jupiter.api.Test;
@@ -55,7 +56,7 @@ class ParserTest {
 
 
     @Test
-    void lexer_noOther() throws Exception {
+    void lexer_noOne() throws Exception {
         String toTest = "faded blue bags contain no other bags.";
 
         ParseBags parser = new ParseBags( toTest );
@@ -76,6 +77,47 @@ class ParserTest {
 
         assertNotNull( parsed );
         assertEquals( 3, parsed.size() );
+    }
+
+    @Test
+    void contained_justOne() throws Exception {
+        String toTest = "bright white bags contain 1 shiny gold bag.";
+
+        ParseBags parser = new ParseBags( toTest );
+        BagRule parsed = parser.parse();
+        List<BagNameValue> contained = parsed.containedBags();
+
+        assertNotNull( parsed );
+        assertEquals( 1, contained.size() );
+        assertEquals( "shiny_gold", contained.get( 0 ).getBagName() );
+        assertEquals( "1", contained.get( 0 ).getBagNumber() );
+    }
+
+    @Test
+    void contained_noOne() throws Exception {
+        String toTest = "faded blue bags contain no other bags.";
+
+        ParseBags parser = new ParseBags( toTest );
+        BagRule parsed = parser.parse();
+        List<BagNameValue> contained = parsed.containedBags();
+
+        assertNotNull( parsed );
+        assertNotNull( contained );
+        assertEquals( 0, contained.size() );
+    }
+
+    @Test
+    void contained_more_than_one() throws Exception {
+        String toTest = "light red bags contain 1 bright white bag, 2 muted yellow bags.";
+
+        ParseBags parser = new ParseBags( toTest );
+        BagRule parsed = parser.parse();
+        List<BagNameValue> contained = parsed.containedBags();
+
+        assertNotNull( parsed );
+        assertEquals( 2, contained.size() );
+        assertEquals( "bright_white", contained.get( 0 ).getBagName() );
+        assertEquals( "1", contained.get( 0 ).getBagNumber() );
     }
 
 }
