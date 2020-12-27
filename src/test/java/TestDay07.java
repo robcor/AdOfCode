@@ -40,18 +40,19 @@ class TestDay07 {
 
 
 
-    @Disabled("skeleton: not yet implemented")
+    //@Disabled("skeleton: not yet implemented")
     @Test
     void secondQuiz() throws Exception {
 
-        QuizD0702Resolver resolver = new QuizD0702Resolver( "day07input.txt" );
+        QuizD0702Resolver resolver = new QuizD0702Resolver( "day07.txt" );
 
         long result = resolver.resolve("shiny_gold");
 
-        assertEquals( 42, result );
+        assertEquals( 38426, result );
 
         System.out.println( "D7Q2 result: " + result );
     }
+
     @Test
     void secondQuizExample() throws Exception {
 
