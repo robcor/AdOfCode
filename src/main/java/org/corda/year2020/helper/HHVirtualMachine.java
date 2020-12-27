@@ -27,7 +27,7 @@ public class HHVirtualMachine {
             .collect( Collectors.toList() );
     }
 
-    List<MachineStatus> runStopOnDuplicate() {
+    public List<MachineStatus> runStopOnDuplicate() {
         List<MachineStatus> statusHistory = new ArrayList<>();
         Set<Integer> lineNumberHistory = new HashSet<>();
         MachineStatus currentStatus = new MachineStatus( 0, 0 );
@@ -37,6 +37,7 @@ public class HHVirtualMachine {
         MachineStatus newStatus = null;
         do {
             newStatus = execute( currentStatus );
+            currentStatus = newStatus;
             statusHistory.add( newStatus );
         } while (lineNumberNotAlreadyPresent( lineNumberHistory, newStatus ));
 
