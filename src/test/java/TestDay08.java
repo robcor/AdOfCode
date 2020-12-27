@@ -34,11 +34,11 @@ class TestDay08 {
     @Test
     void secondQuiz() throws Exception {
 
-        QuizD0801Resolver resolver = new QuizD0801Resolver( "day08.txt" );
+        QuizD0802Resolver resolver = new QuizD0802Resolver( "day08.txt" );
 
         long result = resolver.resolve();
 
-        assertEquals( 42, result );
+        assertEquals( 892, result );
 
         System.out.println( "D8Q2 result: " + result );
     }
