@@ -27,6 +27,10 @@ public class HHVirtualMachine {
             .collect( Collectors.toList() );
     }
 
+    private HHVirtualMachine(List<HHInstruction> instructionList) {
+        this.instructionList = new ArrayList<>(  instructionList);
+    }
+
     public List<MachineStatus> runStopOnDuplicate() {
         List<MachineStatus> statusHistory = new ArrayList<>();
         Set<Integer> lineNumberHistory = new HashSet<>();
@@ -39,10 +43,18 @@ public class HHVirtualMachine {
             newStatus = execute( currentStatus );
             currentStatus = newStatus;
             statusHistory.add( newStatus );
-        } while (lineNumberNotAlreadyPresent( lineNumberHistory, newStatus ));
-
+        } while (lineNumberNotAlreadyPresent( lineNumberHistory, newStatus )
+        && isInLinesRange( newStatus ));
 
         return statusHistory;
+    }
+
+    public int linesSize() {
+        return instructionList.size();
+    }
+
+    private boolean isInLinesRange(MachineStatus newStatus) {
+        return newStatus.lineNumber < instructionList.size();
     }
 
     public MachineStatus execute(MachineStatus currentStatus) {
@@ -65,5 +77,17 @@ public class HHVirtualMachine {
         }
         lineNumberHistory.add( lineNumber ) ;
         return result;
+    }
+
+    public HHVirtualMachine duplicate() {
+        return new HHVirtualMachine(this.instructionList);
+    }
+
+    public HHInstruction getLine(int i) {
+        return instructionList.get( i );
+    }
+
+    public void setLine(HHInstruction instructionNew, int i) {
+        instructionList.set( i , instructionNew);
     }
 }
