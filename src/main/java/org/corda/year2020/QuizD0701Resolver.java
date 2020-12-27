@@ -1,8 +1,8 @@
 package org.corda.year2020;
 
-import org.corda.helper.FileHelper;
-import org.corda.helper.ParseBags;
-import org.corda.model.BagRule;
+import org.corda.year2020.helper.FileHelper;
+import org.corda.year2020.helper.ParseBags;
+import org.corda.year2020.model.BagRule;
 
 import java.util.HashSet;
 import java.util.List;

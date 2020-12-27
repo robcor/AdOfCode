@@ -1,8 +1,8 @@
 package org.corda.year2020;
 
-import org.corda.helper.FileHelper;
-import org.corda.model.ConfigD03;
-import org.corda.model.Day03Data;
+import org.corda.year2020.helper.FileHelper;
+import org.corda.year2020.model.ConfigD03;
+import org.corda.year2020.model.Day03Data;
 
 public abstract class QuizD03 extends Quiz<Day03Data, ConfigD03> {
 

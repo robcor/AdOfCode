@@ -1,7 +1,7 @@
 package org.corda.year2020;
 
-import org.corda.helper.FileHelper;
-import org.corda.model.Day06Data;
+import org.corda.year2020.helper.FileHelper;
+import org.corda.year2020.model.Day06Data;
 
 import java.io.IOException;
 import java.util.ArrayList;

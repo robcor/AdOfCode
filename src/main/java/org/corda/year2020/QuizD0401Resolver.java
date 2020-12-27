@@ -1,6 +1,6 @@
 package org.corda.year2020;
 
-import org.corda.model.Day04Data;
+import org.corda.year2020.model.Day04Data;
 
 public class QuizD0401Resolver extends QuizD04 {
 

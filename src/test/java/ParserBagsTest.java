@@ -1,7 +1,7 @@
-import org.corda.helper.ParseBags;
-import org.corda.model.BagPair;
-import org.corda.model.BagRule;
-import org.corda.model.BagsToken;
+import org.corda.year2020.helper.ParseBags;
+import org.corda.year2020.model.BagPair;
+import org.corda.year2020.model.BagRule;
+import org.corda.year2020.model.BagsToken;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
-class ParserTest {
+class ParserBagsTest {
 
 
     @Test

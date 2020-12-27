@@ -2,8 +2,8 @@ package org.corda.year2020;
 
 
 import org.apache.commons.lang3.StringUtils;
-import org.corda.helper.NumberHelper;
-import org.corda.model.Day02Data;
+import org.corda.year2020.helper.NumberHelper;
+import org.corda.year2020.model.Day02Data;
 
 public class QuizD0201Resolver extends QuizD02 {
 

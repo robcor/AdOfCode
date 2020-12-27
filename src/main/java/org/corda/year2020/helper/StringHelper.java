@@ -1,4 +1,4 @@
-package org.corda.helper;
+package org.corda.year2020.helper;
 
 
 public class StringHelper {

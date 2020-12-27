@@ -1,6 +1,6 @@
-package org.corda.helper;
+package org.corda.year2020.helper;
 
-import org.corda.model.FlightPosition;
+import org.corda.year2020.model.FlightPosition;
 
 public class MathHelper {
     private MathHelper() {

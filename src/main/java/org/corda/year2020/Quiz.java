@@ -1,6 +1,6 @@
 package org.corda.year2020;
 
-import org.corda.model.Numerable;
+import org.corda.year2020.model.Numerable;
 
 import java.io.IOException;
 import java.util.List;

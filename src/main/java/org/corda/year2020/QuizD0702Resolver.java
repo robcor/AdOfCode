@@ -1,11 +1,10 @@
 package org.corda.year2020;
 
-import org.corda.helper.FileHelper;
-import org.corda.helper.ParseBags;
-import org.corda.model.BagPair;
-import org.corda.model.BagRule;
+import org.corda.year2020.helper.FileHelper;
+import org.corda.year2020.helper.ParseBags;
+import org.corda.year2020.model.BagPair;
+import org.corda.year2020.model.BagRule;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -1,4 +1,4 @@
-package org.corda.model;
+package org.corda.year2020.model;
 
 
 import java.util.Set;

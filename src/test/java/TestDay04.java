@@ -1,6 +1,6 @@
 import org.corda.year2020.QuizD0401Resolver;
 import org.corda.year2020.QuizD0402Resolver;
-import org.corda.model.Day04Data;
+import org.corda.year2020.model.Day04Data;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;

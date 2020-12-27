@@ -1,9 +1,9 @@
 package org.corda.year2020;
 
 
-import org.corda.helper.StringHelper;
-import org.corda.model.ConfigD03;
-import org.corda.model.Day03Data;
+import org.corda.year2020.helper.StringHelper;
+import org.corda.year2020.model.ConfigD03;
+import org.corda.year2020.model.Day03Data;
 
 public class QuizD0302Resolver extends QuizD03 {
 

@@ -1,19 +1,19 @@
-package org.corda.helper;
+package org.corda.year2020.helper;
 
 
 import org.corda.exception.AdventParseException;
-import org.corda.model.BagRule;
-import org.corda.model.BagsToken;
-import static org.corda.model.BagsToken.BAG;
-import static org.corda.model.BagsToken.BAGS_COMMA_LITERAL;
-import static org.corda.model.BagsToken.BAGS_END_LITERAL;
-import static org.corda.model.BagsToken.BAGS_LITERAL;
-import static org.corda.model.BagsToken.BAG_COMMA_LITERAL;
-import static org.corda.model.BagsToken.BAG_END_LITERAL;
-import static org.corda.model.BagsToken.BAG_LITERAL;
-import static org.corda.model.BagsToken.CONTAIN_LITERAL;
-import static org.corda.model.BagsToken.NO_LITERAL;
-import static org.corda.model.BagsToken.NUMBER;
+import org.corda.year2020.model.BagRule;
+import org.corda.year2020.model.BagsToken;
+import static org.corda.year2020.model.BagsToken.BAG;
+import static org.corda.year2020.model.BagsToken.BAGS_COMMA_LITERAL;
+import static org.corda.year2020.model.BagsToken.BAGS_END_LITERAL;
+import static org.corda.year2020.model.BagsToken.BAGS_LITERAL;
+import static org.corda.year2020.model.BagsToken.BAG_COMMA_LITERAL;
+import static org.corda.year2020.model.BagsToken.BAG_END_LITERAL;
+import static org.corda.year2020.model.BagsToken.BAG_LITERAL;
+import static org.corda.year2020.model.BagsToken.CONTAIN_LITERAL;
+import static org.corda.year2020.model.BagsToken.NO_LITERAL;
+import static org.corda.year2020.model.BagsToken.NUMBER;
 
 import java.util.ArrayList;
 import java.util.List;
