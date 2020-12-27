@@ -85,7 +85,7 @@ class ParserTest {
 
         ParseBags parser = new ParseBags( toTest );
         BagRule parsed = parser.parse();
-        List<BagPair> contained = parsed.containedBags();
+        List<BagPair> contained = parsed.containedPair();
 
         assertNotNull( parsed );
         assertEquals( 1, contained.size() );
@@ -99,7 +99,7 @@ class ParserTest {
 
         ParseBags parser = new ParseBags( toTest );
         BagRule parsed = parser.parse();
-        List<BagPair> contained = parsed.containedBags();
+        List<BagPair> contained = parsed.containedPair();
 
         assertNotNull( parsed );
         assertNotNull( contained );
@@ -112,7 +112,7 @@ class ParserTest {
 
         ParseBags parser = new ParseBags( toTest );
         BagRule parsed = parser.parse();
-        List<BagPair> contained = parsed.containedBags();
+        List<BagPair> contained = parsed.containedPair();
 
         assertNotNull( parsed );
         assertEquals( 2, contained.size() );

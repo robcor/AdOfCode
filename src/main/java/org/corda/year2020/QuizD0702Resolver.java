@@ -5,10 +5,8 @@ import org.corda.helper.ParseBags;
 import org.corda.model.BagPair;
 import org.corda.model.BagRule;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class QuizD0702Resolver {
@@ -27,64 +25,34 @@ public class QuizD0702Resolver {
 
 
     public long resolve(String mainBag) {
+        int sum = recursiveContained( mainBag);
 
-
-        List<BagRule> mainRules = findBagRuleByMainBagName( mainBag );
-
-        // start
-        List<BagPair> allContainedBags = new ArrayList<>(  );
-
-        List<BagPair> containedBags = recursiveContained( mainRules, allContainedBags );
-
-
-        long numberOfBags = countBags( containedBags );
-
-
-        return numberOfBags;
+        return sum -1;
     }
 
-    private List<BagPair> recursiveContained(List<BagRule> innerRules, List<BagPair> allContainedBags) {
-        List<BagPair> containedBags = listOfContainedPair( innerRules  );
-        List<BagRule> branchesRules = findRuleBranches(containedBags);
+    private int recursiveContained(String outerBagName) {
 
-        if (branchesRules.size() > 0)
-            recursiveContained(branchesRules, allContainedBags);
+        int sum = 0;
+        List<BagRule> outerRules = findBagRuleByBagName( outerBagName );
 
-        allContainedBags.addAll( containedBags );
-        return allContainedBags;
-    }
-
-    private long countBags(List<BagPair> containedBags) {
-
-        return 0;
-    }
-
-    private List<BagPair> listOfContainedPair(List<BagRule> containerRules) {
-        List<List<BagPair>> containedIntemediate = containerRules.stream()
-            .map( x -> x.containedBags() )
-            .collect( Collectors.toList() );
-        List<BagPair> contained = containedIntemediate.stream()
-            .flatMap( Collection::stream )
-            .collect( Collectors.toList() );
-
-        return contained;
+        if (outerRules.size() > 0)  {
+            for (BagRule curRule : outerRules) {
+                List<BagPair> pairList = curRule.containedPair();
+                if (pairList.size() > 0) {
+                    for (BagPair curPair : pairList) {
+                       sum = sum +   curPair.getBagNumberInt() * recursiveContained(curPair.getBagName());
+                    }
+                }
+            }
+        }
+        return sum + 1;
     }
 
 
-    public List<BagRule> findRuleBranches(List<BagPair> contained) {
-        List<List<BagRule>> intermediate = contained.stream()
-            .map( x -> findBagRuleByMainBagName( x.getBagName() ) )
-            .collect( Collectors.toList() );
-        List<BagRule> ruleList = intermediate.stream()
-            .flatMap( Collection::stream )
-            .collect( Collectors.toList() );
 
-        return ruleList;
-    }
-
-    public List<BagRule> findBagRuleByMainBagName(String mainBag) {
+    public List<BagRule> findBagRuleByBagName(String bagName) {
         List<BagRule> ruleList = rules.stream()
-            .filter( x -> mainBag.equals( x.containerBag() ) )
+            .filter( x -> bagName.equals( x.containerBag() ) )
             .collect( Collectors.toList() );
 
         return ruleList;

@@ -34,7 +34,7 @@ public class BagRule {
         return tokens.get( 0 ).getValue();
     }
 
-    public List<BagPair> containedBags() {
+    public List<BagPair> containedPair() {
 
         if (counter != 1) {
            return nameValueList;

@@ -59,7 +59,7 @@ class TestDay07 {
 
         long result = resolver.resolve("shiny_gold");
 
-        assertEquals( 42, result );
+        assertEquals( 126, result );
 
     }
 

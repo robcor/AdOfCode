@@ -19,6 +19,10 @@ public class BagPair {
         return bagNumber;
     }
 
+    public int getBagNumberInt() {
+        return Integer.parseInt( bagNumber );
+    }
+
     @Override
     public String toString() {
         return "{" +
