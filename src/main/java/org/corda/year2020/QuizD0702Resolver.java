@@ -2,9 +2,11 @@ package org.corda.year2020;
 
 import org.corda.helper.FileHelper;
 import org.corda.helper.ParseBags;
+import org.corda.model.BagPair;
 import org.corda.model.BagRule;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -13,8 +15,6 @@ public class QuizD0702Resolver {
     List<BagRule> rules;
 
     public QuizD0702Resolver(String fileName) {
-
-
         List<String> lines = FileHelper.readAllLines( fileName );
 
         this.rules = lines.stream()
@@ -29,39 +29,65 @@ public class QuizD0702Resolver {
     public long resolve(String mainBag) {
 
 
-        Set<String> alreadyChecked = new HashSet<>();
+        List<BagRule> mainRules = findBagRuleByMainBagName( mainBag );
 
-        Set<String> contains = findContains( mainBag );
+        // start
+        List<BagPair> allContainedBags = new ArrayList<>(  );
 
-        recursiveSearchContains( alreadyChecked, contains );
+        List<BagPair> containedBags = recursiveContained( mainRules, allContainedBags );
 
-        return contains.size();
+
+        long numberOfBags = countBags( containedBags );
+
+
+        return numberOfBags;
     }
 
-    private void recursiveSearchContains(Set<String> alreadyChecked, Set<String> containedBy) {
-        Set<String> newContained = new HashSet<>();
-        containedBy.stream().forEach( x -> {
-            if (!alreadyChecked.contains( x )) {
-                newContained.addAll( findContains( x ) );
-                alreadyChecked.add( x );
+    private List<BagPair> recursiveContained(List<BagRule> innerRules, List<BagPair> allContainedBags) {
+        List<BagPair> containedBags = listOfContainedPair( innerRules  );
+        List<BagRule> branchesRules = findRuleBranches(containedBags);
 
-            }
-        } );
+        if (branchesRules.size() > 0)
+            recursiveContained(branchesRules, allContainedBags);
 
-        containedBy.addAll( newContained );
-        if (!alreadyChecked.equals( containedBy )) {
-            recursiveSearchContains( alreadyChecked, containedBy );
-        }
+        allContainedBags.addAll( containedBags );
+        return allContainedBags;
     }
 
-    public Set<String> findContains(String mainBag) {
+    private long countBags(List<BagPair> containedBags) {
 
-        Set<String> containedBy = rules.stream()
+        return 0;
+    }
+
+    private List<BagPair> listOfContainedPair(List<BagRule> containerRules) {
+        List<List<BagPair>> containedIntemediate = containerRules.stream()
+            .map( x -> x.containedBags() )
+            .collect( Collectors.toList() );
+        List<BagPair> contained = containedIntemediate.stream()
+            .flatMap( Collection::stream )
+            .collect( Collectors.toList() );
+
+        return contained;
+    }
+
+
+    public List<BagRule> findRuleBranches(List<BagPair> contained) {
+        List<List<BagRule>> intermediate = contained.stream()
+            .map( x -> findBagRuleByMainBagName( x.getBagName() ) )
+            .collect( Collectors.toList() );
+        List<BagRule> ruleList = intermediate.stream()
+            .flatMap( Collection::stream )
+            .collect( Collectors.toList() );
+
+        return ruleList;
+    }
+
+    public List<BagRule> findBagRuleByMainBagName(String mainBag) {
+        List<BagRule> ruleList = rules.stream()
             .filter( x -> mainBag.equals( x.containerBag() ) )
-            .map( x -> x.containerBag() )
-            .collect( Collectors.toSet() );
+            .collect( Collectors.toList() );
 
-        return containedBy;
+        return ruleList;
     }
 }
 

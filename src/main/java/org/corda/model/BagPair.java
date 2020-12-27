@@ -1,12 +1,12 @@
 package org.corda.model;
 
 
-public class BagNameValue {
+public class BagPair {
 
     private final String bagName;
     private final String bagNumber;
 
-    public BagNameValue(String bagName, String bagNumber) {
+    public BagPair(String bagName, String bagNumber) {
          this.bagName = bagName;
          this.bagNumber = bagNumber;
     }
@@ -17,5 +17,13 @@ public class BagNameValue {
 
     public String getBagNumber() {
         return bagNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            "bagName:'" + bagName + '\'' +
+            ", bagNumber:'" + bagNumber + '\'' +
+            '}';
     }
 }

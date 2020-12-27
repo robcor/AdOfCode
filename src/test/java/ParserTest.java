@@ -1,5 +1,5 @@
 import org.corda.helper.ParseBags;
-import org.corda.model.BagNameValue;
+import org.corda.model.BagPair;
 import org.corda.model.BagRule;
 import org.corda.model.BagsToken;
 import org.junit.jupiter.api.Test;
@@ -85,7 +85,7 @@ class ParserTest {
 
         ParseBags parser = new ParseBags( toTest );
         BagRule parsed = parser.parse();
-        List<BagNameValue> contained = parsed.containedBags();
+        List<BagPair> contained = parsed.containedBags();
 
         assertNotNull( parsed );
         assertEquals( 1, contained.size() );
@@ -99,7 +99,7 @@ class ParserTest {
 
         ParseBags parser = new ParseBags( toTest );
         BagRule parsed = parser.parse();
-        List<BagNameValue> contained = parsed.containedBags();
+        List<BagPair> contained = parsed.containedBags();
 
         assertNotNull( parsed );
         assertNotNull( contained );
@@ -112,7 +112,7 @@ class ParserTest {
 
         ParseBags parser = new ParseBags( toTest );
         BagRule parsed = parser.parse();
-        List<BagNameValue> contained = parsed.containedBags();
+        List<BagPair> contained = parsed.containedBags();
 
         assertNotNull( parsed );
         assertEquals( 2, contained.size() );

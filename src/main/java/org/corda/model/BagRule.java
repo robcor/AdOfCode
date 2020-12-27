@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class BagRule {
     private final List<BagsToken> tokens;
     private int counter = 1;
-    private List<BagNameValue> nameValueList;
+    private List<BagPair> nameValueList;
 
     public BagRule(List<BagsToken> tokens) {
         this.tokens = tokens;
@@ -34,14 +34,14 @@ public class BagRule {
         return tokens.get( 0 ).getValue();
     }
 
-    public List<BagNameValue> containedBags() {
+    public List<BagPair> containedBags() {
 
         if (counter != 1) {
            return nameValueList;
         }
 
         nameValueList = new ArrayList<>(  );
-        BagNameValue nameValue = null;
+        BagPair nameValue = null;
         while ((nameValue = nextPair()) != null) {
             nameValueList.add( nameValue ) ;
         }
@@ -49,7 +49,14 @@ public class BagRule {
         return nameValueList;
     }
 
-    private BagNameValue nextPair() {
+    @Override
+    public String toString() {
+        return "BagRule{" +
+            "nameValueList=" + nameValueList +
+            '}';
+    }
+
+    private BagPair nextPair() {
 
         if (counter >= tokens.size())
             return null;
@@ -59,6 +66,6 @@ public class BagRule {
         BagsToken bag = tokens.get( counter );
         counter++;
 
-        return new BagNameValue(bag.getValue(), number.getValue());
+        return new BagPair(bag.getValue(), number.getValue());
     }
 }

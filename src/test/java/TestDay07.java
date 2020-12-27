@@ -1,4 +1,5 @@
 import org.corda.year2020.QuizD0701Resolver;
+import org.corda.year2020.QuizD0702Resolver;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -43,7 +44,7 @@ class TestDay07 {
     @Test
     void secondQuiz() throws Exception {
 
-        QuizD0701Resolver resolver = new QuizD0701Resolver( "day07input.txt" );
+        QuizD0702Resolver resolver = new QuizD0702Resolver( "day07input.txt" );
 
         long result = resolver.resolve("shiny_gold");
 
@@ -51,12 +52,10 @@ class TestDay07 {
 
         System.out.println( "D7Q2 result: " + result );
     }
-
-    @Disabled("skeleton: not yet implemented")
     @Test
     void secondQuizExample() throws Exception {
 
-        QuizD0701Resolver resolver = new QuizD0701Resolver( "day07inputexample.txt" );
+        QuizD0702Resolver resolver = new QuizD0702Resolver( "day0702inputexample.txt" );
 
         long result = resolver.resolve("shiny_gold");
 
