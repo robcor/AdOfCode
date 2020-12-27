@@ -30,7 +30,7 @@ class TestDay08 {
     }
 
 
-    @Disabled("skeleton: not yet implemented")
+    //@Disabled("skeleton: not yet implemented")
     @Test
     void secondQuiz() throws Exception {
 

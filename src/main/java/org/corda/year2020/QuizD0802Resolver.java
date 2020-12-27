@@ -26,7 +26,7 @@ public class QuizD0802Resolver {
             List<MachineStatus> result = vmModified.runStopOnDuplicate();
             lastStatus = getLastStatus( result );
 
-            if (lastStatus.getLineNumber() > vm.linesSize())
+            if (lastStatus.getLineNumber() >= vm.linesSize())
                 break;
         }
 

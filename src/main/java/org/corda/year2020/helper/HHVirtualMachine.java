@@ -43,8 +43,9 @@ public class HHVirtualMachine {
             newStatus = execute( currentStatus );
             currentStatus = newStatus;
             statusHistory.add( newStatus );
-        } while (lineNumberNotAlreadyPresent( lineNumberHistory, newStatus )
-        && isInLinesRange( newStatus ));
+        } while (
+            lineNumberNotAlreadyPresent( lineNumberHistory, newStatus ) &&
+            isInLinesRange( newStatus ));
 
         return statusHistory;
     }
@@ -54,7 +55,10 @@ public class HHVirtualMachine {
     }
 
     private boolean isInLinesRange(MachineStatus newStatus) {
-        return newStatus.lineNumber < instructionList.size();
+        int lineNumber = newStatus.lineNumber;
+        int size = instructionList.size();
+
+        return lineNumber < size;
     }
 
     public MachineStatus execute(MachineStatus currentStatus) {
