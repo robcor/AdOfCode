@@ -13,7 +13,7 @@ import java.util.List;
 
 class TestDay10 {
 
-    @Disabled("skeleton: not yet implemented")
+    //@Disabled("skeleton: not yet implemented")
     @Test
     void firstQuiz() throws Exception {
 
@@ -21,7 +21,7 @@ class TestDay10 {
 
         long result = resolver.resolve();
 
-        assertEquals( 42, result );
+        assertEquals( 2112, result );
 
         System.out.println( "D9Q1 result: " + result );
     }
@@ -33,7 +33,16 @@ class TestDay10 {
 
         long result = resolver.resolve();
 
-        assertEquals( 42, result );
+        assertEquals( 35, result );
+    }
+
+    @Test
+    void firstQuizExample2() throws Exception {
+        QuizD1001Resolver resolver = new QuizD1001Resolver( "day10example2.txt" );
+
+        long result = resolver.resolve();
+
+        assertEquals( 220, result );
     }
 
 
