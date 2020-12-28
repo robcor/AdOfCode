@@ -46,7 +46,7 @@ class TestDay10 {
     }
 
 
-    @Disabled("skeleton: not yet implemented")
+    //@Disabled("skeleton: not yet implemented")
     @Test
     void secondQuiz() throws Exception {
 
@@ -59,7 +59,7 @@ class TestDay10 {
         System.out.println( "D8Q2 result: " + result );
     }
 
-    @Disabled("skeleton: not yet implemented")
+    //@Disabled("skeleton: not yet implemented")
     @Test
     void secondQuizExample() throws Exception {
 
@@ -67,7 +67,18 @@ class TestDay10 {
 
         long result = resolver.resolve();
 
-        assertEquals( 24, result );
+        assertEquals( 8, result );
+
+    }
+
+    @Test
+    void secondQuizExample2() throws Exception {
+
+        QuizD1002Resolver resolver = new QuizD1002Resolver( "day10example2.txt" );
+
+        long result = resolver.resolve();
+
+        assertEquals( 19208, result );
 
     }
 
