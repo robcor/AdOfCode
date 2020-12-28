@@ -1,30 +1,26 @@
 package org.corda.year2020;
 
 import org.corda.helper.Facade;
-import org.corda.helper.FileHelper;
 
 import java.io.IOException;
 import java.util.List;
 
 public class QuizD0901Resolver {
-    private final List<Long> lines;
+    private final List<Long> valuesList;
     private int preambleSize;
 
 
     public QuizD0901Resolver(String fileName, int preambleSize) throws IOException {
-        List<String> rawLines = FileHelper.readAllLines( fileName );
-
-        lines = Facade.longFromFile( fileName );
-
+        this.valuesList = Facade.longFromFile( fileName );
         this.preambleSize = preambleSize;
     }
 
     public long resolve() {
         Long valueToCheck = -1l;
-        for (int i = 0; i < lines.size(); i++) {
+        for (int i = 0; i < valuesList.size(); i++) {
             int valueIndex = i + preambleSize;
-            valueToCheck = lines.get( valueIndex );
-            if (!thereASum( valueToCheck, lines, i, preambleSize )) {
+            valueToCheck = valuesList.get( valueIndex );
+            if (!thereASum( valueToCheck, valuesList, i, preambleSize )) {
                 break;
             }
         }
