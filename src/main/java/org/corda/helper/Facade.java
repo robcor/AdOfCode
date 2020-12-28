@@ -1,4 +1,4 @@
-package org.corda.year2020.helper;
+package org.corda.helper;
 
 
 import java.io.IOException;

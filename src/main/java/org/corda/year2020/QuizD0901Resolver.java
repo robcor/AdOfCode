@@ -1,7 +1,7 @@
 package org.corda.year2020;
 
-import org.corda.year2020.helper.Facade;
-import org.corda.year2020.helper.FileHelper;
+import org.corda.helper.Facade;
+import org.corda.helper.FileHelper;
 
 import java.io.IOException;
 import java.util.List;

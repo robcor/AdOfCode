@@ -1,4 +1,4 @@
-import org.corda.year2020.helper.ParseBags;
+import org.corda.helper.ParseBags;
 import org.corda.year2020.model.BagPair;
 import org.corda.year2020.model.BagRule;
 import org.corda.year2020.model.BagsToken;

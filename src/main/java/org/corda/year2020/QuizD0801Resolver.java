@@ -1,7 +1,7 @@
 package org.corda.year2020;
 
-import org.corda.year2020.helper.HHVirtualMachine;
-import org.corda.year2020.helper.MachineStatus;
+import org.corda.helper.HHVirtualMachine;
+import org.corda.helper.MachineStatus;
 
 import java.util.List;
 

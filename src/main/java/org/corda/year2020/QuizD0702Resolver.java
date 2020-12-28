@@ -1,7 +1,7 @@
 package org.corda.year2020;
 
-import org.corda.year2020.helper.FileHelper;
-import org.corda.year2020.helper.ParseBags;
+import org.corda.helper.FileHelper;
+import org.corda.helper.ParseBags;
 import org.corda.year2020.model.BagPair;
 import org.corda.year2020.model.BagRule;
 

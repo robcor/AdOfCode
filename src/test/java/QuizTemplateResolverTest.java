@@ -1,5 +1,5 @@
 import org.corda.year2020.QuizTemplateResolver;
-import org.corda.year2020.helper.FileHelper;
+import org.corda.helper.FileHelper;
 import org.corda.year2020.model.Day03Data;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

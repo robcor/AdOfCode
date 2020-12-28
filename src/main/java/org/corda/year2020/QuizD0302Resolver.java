@@ -1,7 +1,7 @@
 package org.corda.year2020;
 
 
-import org.corda.year2020.helper.StringHelper;
+import org.corda.helper.StringHelper;
 import org.corda.year2020.model.ConfigD03;
 import org.corda.year2020.model.Day03Data;
 

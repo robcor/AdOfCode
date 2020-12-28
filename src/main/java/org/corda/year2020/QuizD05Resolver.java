@@ -1,8 +1,8 @@
 package org.corda.year2020;
 
 
-import org.corda.year2020.helper.FileHelper;
-import org.corda.year2020.helper.MathHelper;
+import org.corda.helper.FileHelper;
+import org.corda.helper.MathHelper;
 
 import java.util.ArrayList;
 import java.util.Comparator;

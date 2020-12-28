@@ -1,7 +1,7 @@
 package org.corda.year2020.model;
 
-import org.corda.year2020.helper.InstructionExecute;
-import org.corda.year2020.helper.MachineStatus;
+import org.corda.helper.InstructionExecute;
+import org.corda.helper.MachineStatus;
 
 public enum HHMnemonic implements InstructionExecute {
     NOP {

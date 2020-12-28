@@ -1,7 +1,7 @@
-import org.corda.year2020.helper.FileHelper;
-import org.corda.year2020.helper.MathHelper;
-import org.corda.year2020.helper.NumberHelper;
-import org.corda.year2020.helper.StringHelper;
+import org.corda.helper.FileHelper;
+import org.corda.helper.MathHelper;
+import org.corda.helper.NumberHelper;
+import org.corda.helper.StringHelper;
 import org.corda.year2020.model.FlightPosition;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

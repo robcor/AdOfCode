@@ -2,10 +2,10 @@ package org.corda.year2020;
 
 
 import org.apache.commons.lang3.StringUtils;
-import org.corda.year2020.helper.StringHelper;
+import org.corda.helper.StringHelper;
 import org.corda.year2020.model.Day04Data;
-import static org.corda.year2020.helper.NumberHelper.isInRange;
-import static org.corda.year2020.helper.StringHelper.isNull;
+import static org.corda.helper.NumberHelper.isInRange;
+import static org.corda.helper.StringHelper.isNull;
 
 public class QuizD0402Resolver extends QuizD04 {
 

@@ -1,6 +1,6 @@
-import org.corda.year2020.helper.HHVirtualMachine;
-import org.corda.year2020.helper.MachineStatus;
-import org.corda.year2020.helper.ParseAssembly;
+import org.corda.helper.HHVirtualMachine;
+import org.corda.helper.MachineStatus;
+import org.corda.helper.ParseAssembly;
 import org.corda.year2020.model.HHInstruction;
 import org.corda.year2020.model.HHMnemonic;
 import org.junit.jupiter.api.Test;
