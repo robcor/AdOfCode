@@ -2,6 +2,7 @@ package org.corda.year2020.helper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class NumberHelper {
 
@@ -17,11 +18,18 @@ public class NumberHelper {
         return intList;
     }
 
-
     public static int[] stringListToIntArray(List<String> stringList) {
         int[] intArray = stringList.stream().mapToInt( s -> Integer.parseInt( s ) ).toArray();
 
         return intArray;
+    }
+
+    public static List<Long> stringListToLongList(List<String> stringList) {
+        List<Long> longList = stringList.stream()
+            .map( s -> Long.parseLong( s ) )
+            .collect( Collectors.toList() );
+
+        return longList;
     }
 
     public static boolean isInRange(int value, int minValue, int maxValue) {

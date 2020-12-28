@@ -20,4 +20,12 @@ public class Facade {
 
         return intArray;
     }
+
+    public static List<Long> longFromFile(String fileName) throws IOException {
+        List<String> stringList = FileHelper.readAllLines( fileName );
+
+        List<Long> longList = NumberHelper.stringListToLongList( stringList );
+
+        return longList;
+    }
 }
