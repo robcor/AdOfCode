@@ -82,6 +82,17 @@ class TestDay10 {
 
     }
 
+    @Test
+    void secondQuizExampleSimple() throws Exception {
+
+        QuizD1002Resolver resolver = new QuizD1002Resolver( "day10simple.txt" );
+
+        long result = resolver.testPerm();
+
+        assertEquals( 821, result );
+
+    }
+
 
 
 

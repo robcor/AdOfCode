@@ -11,55 +11,81 @@ import java.util.List;
 
 public class QuizD1002Resolver {
     private final List<Long> valuesList;
+    private final Long lastElement;
+    private List<List<Long>> allCorrectList;
 
     public QuizD1002Resolver(String fileName) throws IOException {
         this.valuesList = Facade.longFromFile( fileName );
         Collections.sort( this.valuesList );
+        this.allCorrectList = new ArrayList<>();
+        this.lastElement = CollectionHelper.lastElement( this.valuesList );
     }
 
     public long resolve() {
 
-        List<List<Long>> allCorrectList = new ArrayList<>();
-        addUnique( allCorrectList, this.valuesList );
-        long lastElement = CollectionHelper.lastElement( this.valuesList );
 
         List<Long> listIMAIN = this.valuesList;
+
+        addUnique( listIMAIN );
         for (int i1 = 0; i1 < listIMAIN.size(); i1++) {
-
-            List<Long> listIUNO = removeIx( listIMAIN, i1 );
-
-            if (checkCorrectList( listIUNO, lastElement )) {
-                addUnique( allCorrectList, listIUNO );
-            }
-
+            List<Long> listIUNO = addRemoveN( listIMAIN, i1 );
+            int b= 25;
             for (int i2 = 0 ; i2 < listIUNO.size(); i2++) {
-                List<Long> listIDUE = removeIx( listIUNO, i2 );
-
-                if (checkCorrectList( listIDUE, lastElement )) {
-                    addUnique( allCorrectList, listIDUE );
-                }
+                List<Long> listIDUE = addRemoveN( listIUNO, i2 );
                 for (int i3 = 0 ; i3 < listIDUE.size(); i3++) {
-                    List<Long> listITRE = removeIx( listIDUE, i3 );
-
-                    if (checkCorrectList( listITRE, lastElement )) {
-                        addUnique( allCorrectList, listITRE );
-                    }
-
+                    List<Long> listITRE = addRemoveN( listIDUE, i3 );
+                    int a =2;
                 }
             }
-
         }
 
 
         return allCorrectList.size();
     }
 
-    private void addUnique(List<List<Long>> allCorrectList, List<Long> listI1) {
+    public long testPerm() {
 
-        if (!contains(allCorrectList,listI1)) {
-            allCorrectList.add( listI1 );
+
+        List<Long> listIMAIN = this.valuesList;
+
+        addUnique( listIMAIN );
+        for (int i1 = 0; i1 < listIMAIN.size(); i1++) {
+            List<Long> listIUNO = addRemoveNAll( listIMAIN, i1 );
+            int b= 25;
+            for (int i2 = 0 ; i2 < listIUNO.size(); i2++) {
+                List<Long> listIDUE = addRemoveNAll( listIUNO, i2 );
+                for (int i3 = 0 ; i3 < listIDUE.size(); i3++) {
+                    List<Long> listITRE = addRemoveNAll( listIDUE, i3 );
+                    int a =2;
+                }
+            }
         }
 
+
+        return allCorrectList.size();
+    }
+
+    private List<Long> addRemoveN(List<Long> outerList, int i1) {
+        List<Long> innerList = removeIx( outerList, i1 );
+
+        if (checkCorrectList( innerList, this.lastElement )) {
+            addUnique( innerList );
+        }
+        return innerList;
+    }
+
+    private List<Long> addRemoveNAll(List<Long> outerList, int i1) {
+        List<Long> innerList = removeIx( outerList, i1 );
+
+        this.allCorrectList.add( innerList );
+
+        return innerList;
+    }
+
+    private void addUnique(List<Long> list) {
+        if (!contains(this.allCorrectList,list)) {
+            this.allCorrectList.add( list );
+        }
     }
 
     private boolean contains(List<List<Long>> allCorrectList, List<Long> listI1) {
