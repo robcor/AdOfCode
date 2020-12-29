@@ -13,7 +13,6 @@ import java.util.List;
 
 class TestDay10 {
 
-    //@Disabled("skeleton: not yet implemented")
     @Test
     void firstQuiz() throws Exception {
 
@@ -23,7 +22,7 @@ class TestDay10 {
 
         assertEquals( 2112, result );
 
-        System.out.println( "D9Q1 result: " + result );
+        System.out.println( "D10Q1 result: " + result );
     }
 
 
@@ -46,7 +45,7 @@ class TestDay10 {
     }
 
 
-    //@Disabled("skeleton: not yet implemented")
+    @Disabled("D10Q2: not resolved")
     @Test
     void secondQuiz() throws Exception {
 
@@ -56,10 +55,10 @@ class TestDay10 {
 
         assertEquals( 42, result );
 
-        System.out.println( "D8Q2 result: " + result );
+        System.out.println( "D10Q2 result: " + result );
     }
 
-    //@Disabled("skeleton: not yet implemented")
+
     @Test
     void secondQuizExample() throws Exception {
 
@@ -71,6 +70,7 @@ class TestDay10 {
 
     }
 
+    @Disabled("D8Q2: not resolved")
     @Test
     void secondQuizExample2() throws Exception {
 
@@ -93,6 +93,7 @@ class TestDay10 {
 
     }
 
+    @Disabled("D10Q2: too long")
     @Test
     void secondQuizPerm() throws Exception {
 
