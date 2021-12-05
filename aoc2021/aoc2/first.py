@@ -20,5 +20,5 @@ def calc(file_name):
     return x, y
 
 
-x, y = calc("input2.txt")
+x, y = calc("input3.txt")
 print(f'x {x} y {y} result = {x * y}')
